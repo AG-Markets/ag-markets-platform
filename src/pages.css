@@ -29,6 +29,25 @@ main > section.reveal-visible {
   transform: translateY(0);
 }
 
+.brand-logo {
+  display: block;
+  width: 168px;
+  height: auto;
+  max-height: 50px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.footer .brand-logo {
+  width: 180px;
+  max-height: 54px;
+}
+
+.mobile-nav-head .brand-logo {
+  width: 148px;
+  max-height: 44px;
+}
+
 .nav-dropdown a {
   font-size: 12px;
 }
@@ -1120,6 +1139,11 @@ main > section.reveal-visible {
     display: flex;
   }
 
+  .nav-inner .brand-logo {
+    width: 152px;
+    max-height: 45px;
+  }
+
   .footer-grid {
     grid-template-columns: 1.5fr 1fr 0.8fr 1fr;
   }
@@ -1147,6 +1171,16 @@ main > section.reveal-visible {
 
   .page-hero-grid {
     gap: 38px;
+  }
+
+  .nav-inner .brand-logo {
+    width: 146px;
+    max-height: 43px;
+  }
+
+  .mobile-nav-head .brand-logo {
+    width: 142px;
+    max-height: 42px;
   }
 
   .page-preview {
@@ -1221,6 +1255,21 @@ main > section.reveal-visible {
 
   .breadcrumbs {
     margin-bottom: 26px;
+  }
+
+  .nav-inner .brand-logo {
+    width: 132px;
+    max-height: 39px;
+  }
+
+  .mobile-nav-head .brand-logo {
+    width: 132px;
+    max-height: 39px;
+  }
+
+  .footer .brand-logo {
+    width: 160px;
+    max-height: 48px;
   }
 
   .page-hero-copy h1,

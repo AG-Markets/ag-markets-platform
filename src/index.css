@@ -42,11 +42,7 @@ a { color: inherit; text-decoration: none; }
 }
 .navbar-scrolled { box-shadow: 0 8px 30px rgba(0,27,46,.18); }
 .nav-inner { width: min(1320px, calc(100% - 48px)); height: 100%; margin: auto; display: flex; align-items: center; justify-content: space-between; }
-.brand { display: inline-flex; align-items: center; gap: 10px; color: #fff; flex-shrink: 0; }
-.brand-mark { width: 42px; height: 42px; display: grid; place-items: center; border: 2px solid #fff; border-radius: 50%; font-size: 14px; font-weight: 900; letter-spacing: -1px; }
-.brand-copy { display: flex; flex-direction: column; line-height: 1; }
-.brand-copy strong { font-size: 16px; letter-spacing: 1.5px; }
-.brand-copy small { margin-top: 5px; color: #b8c7cd; font-size: 7.5px; letter-spacing: 2.1px; }
+.brand { display: inline-flex; align-items: center; flex-shrink: 0; }
 .nav-links { display: flex; align-items: center; gap: 20px; color: #fff; font-size: 13px; }
 .nav-links > a:not(.button), .nav-more > button { opacity: .88; transition: color .2s; }
 .nav-links > a:hover, .nav-more > button:hover { color: #48d77b; opacity: 1; }
@@ -316,9 +312,6 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 620px) {
   .container, .nav-inner { width: calc(100% - 32px); }
   .navbar { height: 68px; }
-  .brand-mark { width: 38px; height: 38px; }
-  .brand-copy strong { font-size: 14px; }
-  .brand-copy small { font-size: 6.5px; }
   .hero-grid { padding: 52px 0; }
   .hero h1 { font-size: 46px; letter-spacing: -3px; }
   .hero-copy > p { font-size: 16px; }
@@ -409,20 +402,6 @@ body {
   font-size: 12.5px;
   font-weight: 500;
   letter-spacing: -0.01em;
-}
-
-.brand-mark {
-  width: 40px;
-  height: 40px;
-  border-width: 1.5px;
-  border-radius: 50%;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.brand-copy strong {
-  font-size: 15px;
-  letter-spacing: 1.4px;
 }
 
 .hero {
