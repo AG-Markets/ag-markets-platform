@@ -1,8 +1,21 @@
 import { ArrowRight, Check, Compass, ShieldCheck } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { applicationConfig } from '../config/application'
+import { AGTradingAnimation, type AnimationVariant } from './AGTradingAnimation'
 import type { MarketingPage as MarketingPageContent } from '../data/sitePages'
 import { productNavigation } from '../data/sitePages'
+
+const animationVariants: Record<string, AnimationVariant> = {
+  '/ai-intelligence': 'intelligence',
+  '/ai-analyst': 'analyst',
+  '/market-radar': 'radar',
+  '/risk-intelligence': 'risk',
+  '/trading-tools': 'tools',
+  '/investor-intelligence': 'investor',
+  '/performance-analytics': 'performance',
+  '/academy': 'academy',
+  '/about': 'intelligence',
+}
 
 export function MarketingPage({ page }: { page: MarketingPageContent }) {
   const related = productNavigation.filter((item) => item.path !== page.path).slice(0, 3)
@@ -39,6 +52,7 @@ export function MarketingPage({ page }: { page: MarketingPageContent }) {
                 <div key={metric.label}><span>{metric.label}</span><strong>{metric.value}</strong></div>
               ))}
             </div>
+            <AGTradingAnimation variant={animationVariants[page.path] ?? 'intelligence'} size="compact" />
             <div className="preview-footnote">Illustrative scenario · No live data or application functionality</div>
           </aside>
         </div>

@@ -2,6 +2,7 @@ import { ArrowRight, BarChart3, BookOpen, Bot, Compass, LineChart, ShieldCheck, 
 import { Link } from 'react-router-dom'
 import { Hero } from '../components/Hero'
 import { DashboardPreview } from '../components/DashboardPreview'
+import { AGTradingAnimation } from '../components/AGTradingAnimation'
 import { productNavigation } from '../data/sitePages'
 
 const productSummaries = [
@@ -18,11 +19,17 @@ const productSummaries = [
 export function HomePage() {
   return (
     <main className="home-page">
-      <Hero><DashboardPreview /></Hero>
+      <Hero><AGTradingAnimation variant="home" size="large" /></Hero>
       <section className="home-positioning">
         <div className="container home-positioning-grid">
           <div><div className="eyebrow"><span></span>A public introduction to AG Markets</div><h2>Understand the platform before you enter it.</h2></div>
           <p>AG Markets brings together planned intelligence products for traders and investors. This website explains the ideas, shares educational context, and shows clearly labelled previews. Practical functionality belongs in a separate application.</p>
+        </div>
+      </section>
+      <section className="home-dashboard">
+        <div className="container home-dashboard-grid">
+          <DashboardPreview />
+          <div><div className="eyebrow"><span></span>Platform preview</div><h2>Explore the proposed workspace.</h2><p>This static preview illustrates how market context, research, and portfolio information could be organised. It is not a working dashboard and does not connect to live markets.</p><Link className="text-link" to="/ai-intelligence">See how the products fit together <ArrowRight size={15} /></Link></div>
         </div>
       </section>
       <section className="home-products">

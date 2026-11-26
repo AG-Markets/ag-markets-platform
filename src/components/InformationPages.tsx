@@ -1,6 +1,7 @@
 import { ArrowRight, Check, Mail, MessageCircleQuestion } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { applicationConfig } from '../config/application'
+import { AGTradingAnimation } from './AGTradingAnimation'
 import type { LegalPage as LegalPageContent } from '../data/sitePages'
 import { faqItems, legalNavigation, pricingPlans } from '../data/sitePages'
 
@@ -23,6 +24,7 @@ export function PricingPage() {
         heading="Plans designed around how you use market intelligence."
         intro="AG Markets is planning several membership levels for different research needs. The names and benefit outlines below are for information only; prices, availability, and final entitlements have not been set."
       />
+      <div className="container pricing-animation-wrap"><AGTradingAnimation variant="pricing" size="compact" /></div>
       <section className="container pricing-detail-grid">
         {pricingPlans.map((plan, index) => (
           <article className={`pricing-detail-card${index === 1 ? ' pricing-detail-featured' : ''}`} key={plan.name}>
@@ -52,7 +54,10 @@ export function FaqPage() {
         intro="These answers explain the public website, the product previews, and what to expect as the separate application is developed."
       />
       <section className="container faq-layout">
-        <aside className="faq-aside"><MessageCircleQuestion size={25} /><h2>Start with the product pages</h2><p>Each product page explains its intended purpose, sample workflow, and what remains illustrative.</p><Link to="/ai-intelligence">Explore AI Intelligence <ArrowRight size={15} /></Link></aside>
+        <div className="faq-side-stack">
+          <aside className="faq-aside"><MessageCircleQuestion size={25} /><h2>Start with the product pages</h2><p>Each product page explains its intended purpose, sample workflow, and what remains illustrative.</p><Link to="/ai-intelligence">Explore AI Intelligence <ArrowRight size={15} /></Link></aside>
+          <AGTradingAnimation variant="support" size="compact" />
+        </div>
         <div className="faq-list">
           {faqItems.map((item, index) => (
             <details className="faq-item" key={item.question} open={index === 0}>
@@ -90,6 +95,7 @@ export function ContactPage() {
           <div><strong>Website feedback</strong><p>Share accessibility, content, or navigation issues with the team.</p></div>
           <div><strong>Application access</strong><p>Application login and registration are not yet provided here. Their links remain configurable placeholders.</p></div>
           <p className="contact-boundary">Do not send account passwords, payment details, or sensitive financial information to a placeholder address.</p>
+          <AGTradingAnimation variant="support" size="compact" />
         </div>
       </section>
     </main>
@@ -101,7 +107,10 @@ export function LegalPage({ page }: { page: LegalPageContent }) {
     <main className="information-page legal-page">
       <PageIntro label={page.eyebrow} heading={page.heading} intro={page.intro} />
       <div className="container legal-layout">
-        <aside className="legal-nav"><strong>Website policies</strong>{legalNavigation.map((item) => <Link key={item.path} to={item.path} className={item.path === page.path ? 'legal-current' : ''}>{item.label}</Link>)}</aside>
+        <aside className="legal-aside-stack">
+          <nav className="legal-nav" aria-label="Website policies"><strong>Website policies</strong>{legalNavigation.map((item) => <Link key={item.path} to={item.path} className={item.path === page.path ? 'legal-current' : ''}>{item.label}</Link>)}</nav>
+          <AGTradingAnimation variant="legal" size="mini" />
+        </aside>
         <article className="legal-content">
           <div className="draft-banner"><strong>Draft for review</strong><span>This content must be checked against AG Markets’ actual operations and applicable law before publication.</span></div>
           {page.sections.map((section) => (
@@ -122,6 +131,7 @@ export function NotFoundPage() {
         <h1>This page is not part of the AG Markets website.</h1>
         <p>Check the address or return to the homepage to explore the platform and its product pages.</p>
         <Link className="button" to="/">Back to Home <ArrowRight size={16} /></Link>
+        <AGTradingAnimation variant="support" size="compact" />
       </div>
     </main>
   )
