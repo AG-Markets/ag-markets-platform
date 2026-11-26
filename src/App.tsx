@@ -1,59 +1,67 @@
-import { Navbar } from './components/Navbar'
 import { useEffect } from 'react'
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import { Footer } from './components/Footer'
-import { Hero } from './components/Hero'
-import { DashboardPreview } from './components/DashboardPreview'
-import {
-  AIIntelligence,
-  MarketRadar,
-  RiskManagement,
-  TradingTools,
-  InvestorIntelligence,
-  Academy,
-  Pricing,
-  About,
-  FinalCta,
-} from './sections/HomeSections'
+import { LegalPage, NotFoundPage, PricingPage, FaqPage, ContactPage } from './components/InformationPages'
+import { MarketingPage } from './components/MarketingPage'
+import { Navbar } from './components/Navbar'
+import { HomePage } from './pages/HomePage'
+import { legalPages, marketingPages } from './data/sitePages'
 
-function App() {
+function RouteMetadata({ title, description }: { title: string; description: string }) {
   useEffect(() => {
-    const sections = document.querySelectorAll('main > section')
-    if (!('IntersectionObserver' in window)) {
-      sections.forEach((section) => section.classList.add('reveal-visible'))
-      return
+    document.title = title
+    let meta = document.querySelector<HTMLMetaElement>('meta[name="description"]')
+    if (!meta) {
+      meta = document.createElement('meta')
+      meta.name = 'description'
+      document.head.append(meta)
     }
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('reveal-visible')
-          observer.unobserve(entry.target)
-        }
-      })
-    }, { threshold: 0.08 })
-    sections.forEach((section) => observer.observe(section))
-    return () => observer.disconnect()
-  }, [])
+    meta.content = description
+  }, [description, title])
+  return null
+}
+
+function AppRoutes() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
 
   return (
     <>
       <Navbar />
-      <main>
-        <Hero>
-          <DashboardPreview />
-        </Hero>
-        <AIIntelligence />
-        <MarketRadar />
-        <RiskManagement />
-        <TradingTools />
-        <InvestorIntelligence />
-        <Academy />
-        <Pricing />
-        <About />
-        <FinalCta />
-      </main>
+      <Routes>
+        <Route
+          path="/"
+          element={<><RouteMetadata title="AG Markets — AI Financial Intelligence" description="Explore AG Markets, a planned financial intelligence platform for market research, risk awareness, trading tools, investing context, and education." /><HomePage /></>}
+        />
+        {marketingPages.map((page) => (
+          <Route
+            key={page.path}
+            path={page.path}
+            element={<><RouteMetadata title={page.title} description={page.description} /><MarketingPage page={page} /></>}
+          />
+        ))}
+        <Route path="/pricing" element={<><RouteMetadata title="Pricing and Membership | AG Markets" description="Compare proposed AG Markets membership audiences and planned benefits. Pricing and availability are not final." /><PricingPage /></>} />
+        <Route path="/faq" element={<><RouteMetadata title="Frequently Asked Questions | AG Markets" description="Answers about AG Markets, its illustrative previews, the future application, and planned membership." /><FaqPage /></>} />
+        <Route path="/contact" element={<><RouteMetadata title="Contact AG Markets" description="Contact AG Markets about its public website, product information, and future application availability." /><ContactPage /></>} />
+        {legalPages.map((page) => (
+          <Route
+            key={page.path}
+            path={page.path}
+            element={<><RouteMetadata title={page.title} description={page.description} /><LegalPage page={page} /></>}
+          />
+        ))}
+        <Route path="*" element={<><RouteMetadata title="Page Not Found | AG Markets" description="The requested page could not be found. Return to AG Markets to explore the public website." /><NotFoundPage /></>} />
+      </Routes>
       <Footer />
     </>
   )
+}
+
+function App() {
+  return <BrowserRouter><AppRoutes /></BrowserRouter>
 }
 
 export default App

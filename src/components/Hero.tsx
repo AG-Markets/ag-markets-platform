@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { ArrowRight, ShieldCheck } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { applicationConfig } from '../config/application'
 
 export function Hero({ children }: { children: ReactNode }) {
@@ -11,7 +12,7 @@ export function Hero({ children }: { children: ReactNode }) {
           <h1>Intelligence Beyond<br />the <em>Charts.</em></h1>
           <p>Advanced AI financial intelligence, market analysis and risk management designed for a smarter approach to trading and investing.</p>
           <div className="hero-actions">
-            <a className="button" href="#ai-intelligence">Explore AG Intelligence <ArrowRight size={17} /></a>
+            <Link className="button" to="/ai-intelligence">Explore AG Intelligence <ArrowRight size={17} /></Link>
             <a className="button button-outline" href={applicationConfig.registrationUrl}>Get Started</a>
           </div>
           <div className="hero-trust">

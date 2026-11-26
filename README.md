@@ -1,6 +1,12 @@
 # AG Markets Public Website
 
-The AG Markets public website introduces and explains the platform. Interactive financial tools, monitoring, and account functionality belong in a separately developed AG Markets application.
+The AG Markets public website introduces the platform, explains planned products, and provides educational and company information. Practical financial tools, monitoring, and account functionality belong in a separately developed AG Markets application.
+
+## Routes
+
+The site uses React Router for its independent public pages. Each page has route-specific copy, a title, and a meta description. Unknown paths show a custom not-found page.
+
+For static hosting, the deploy target must serve `index.html` for unknown paths so direct links and refreshes on client-side routes work. The `public/_redirects` rule configures this fallback for Netlify. Add the equivalent SPA rewrite if deploying on another host.
 
 ## Application integration
 

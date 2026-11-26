@@ -1,11 +1,21 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronDown } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { Brand } from './Brand'
 import { applicationConfig } from '../config/application'
+import { companyNavigation, legalNavigation, productNavigation } from '../data/sitePages'
+
+const mobileLinks = [
+  { label: 'Home', path: '/' },
+  ...productNavigation,
+  ...companyNavigation,
+  ...legalNavigation,
+]
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState<'platform' | 'company' | null>(null)
   const menuRef = useRef<HTMLElement>(null)
   const toggleRef = useRef<HTMLButtonElement>(null)
 
@@ -14,6 +24,15 @@ export function Navbar() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    if (!activeDropdown) return
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setActiveDropdown(null)
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [activeDropdown])
 
   useEffect(() => {
     if (!open) return
@@ -56,17 +75,7 @@ export function Navbar() {
   }, [open])
 
   const closeMenu = () => setOpen(false)
-
-  const mobileLinks = [
-    ['Home', '#home'],
-    ['AI Intelligence', '#ai-intelligence'],
-    ['Market Radar', '#market-radar'],
-    ['Risk Management', '#risk'],
-    ['Trading Tools', '#tools'],
-    ['Investor Intelligence', '#investors'],
-    ['AG Academy', '#academy'],
-    ['About', '#about'],
-  ]
+  const closeDropdown = () => setActiveDropdown(null)
 
   return (
     <header className={`navbar${scrolled ? ' navbar-scrolled' : ''}`}>
@@ -83,22 +92,33 @@ export function Navbar() {
         >
           <span></span><span></span><span></span>
         </button>
-        <nav className={`nav-links${open ? ' nav-links-open' : ''}`} aria-label="Main navigation">
-          <a href="#home" onClick={() => setOpen(false)}>Home</a>
-          <a href="#ai-intelligence" onClick={() => setOpen(false)}>AI Intelligence</a>
-          <a href="#market-radar" onClick={() => setOpen(false)}>Market Radar</a>
-          <a href="#risk" onClick={() => setOpen(false)}>Risk</a>
-          <a href="#tools" onClick={() => setOpen(false)}>Trading Tools</a>
-          <a href="#investors" onClick={() => setOpen(false)}>Investors</a>
-          <span className="nav-more">
-            <button type="button">More <ChevronDown size={14} /></button>
-            <span className="nav-dropdown">
-              <a href="#academy">AG Academy</a>
-              <a href="#about">About</a>
+        <nav className="nav-links" aria-label="Main navigation">
+          <Link to="/">Home</Link>
+          <span className={`nav-more${activeDropdown === 'platform' ? ' nav-more-open' : ''}`}>
+            <button
+              type="button"
+              aria-expanded={activeDropdown === 'platform'}
+              aria-controls="platform-dropdown"
+              onClick={() => setActiveDropdown((current) => current === 'platform' ? null : 'platform')}
+            >Platform <ChevronDown size={14} /></button>
+            <span className="nav-dropdown" id="platform-dropdown">
+              {productNavigation.map((item) => <Link key={item.path} to={item.path} onClick={closeDropdown}>{item.label}</Link>)}
             </span>
           </span>
-          <a className="nav-login" href={applicationConfig.loginUrl} onClick={() => setOpen(false)}>Login</a>
-          <a className="button button-small" href={applicationConfig.registrationUrl} onClick={() => setOpen(false)}>Get Started</a>
+          <span className={`nav-more nav-company${activeDropdown === 'company' ? ' nav-more-open' : ''}`}>
+            <button
+              type="button"
+              aria-expanded={activeDropdown === 'company'}
+              aria-controls="company-dropdown"
+              onClick={() => setActiveDropdown((current) => current === 'company' ? null : 'company')}
+            >Company <ChevronDown size={14} /></button>
+            <span className="nav-dropdown" id="company-dropdown">
+              {companyNavigation.map((item) => <Link key={item.path} to={item.path} onClick={closeDropdown}>{item.label}</Link>)}
+              {legalNavigation.map((item) => <Link key={item.path} to={item.path} onClick={closeDropdown}>{item.label}</Link>)}
+            </span>
+          </span>
+          <a className="nav-login" href={applicationConfig.loginUrl}>Login</a>
+          <a className="button button-small" href={applicationConfig.registrationUrl}>Get Started</a>
         </nav>
       </div>
       <aside
@@ -107,6 +127,7 @@ export function Navbar() {
         className={`mobile-navigation${open ? ' mobile-navigation-open' : ''}`}
         aria-label="Mobile navigation"
         aria-hidden={!open}
+        inert={!open}
       >
         <div className="mobile-nav-head">
           <Brand />
@@ -119,12 +140,12 @@ export function Navbar() {
             <span></span><span></span>
           </button>
         </div>
-        <nav className="mobile-nav-links" aria-label="Mobile primary navigation">
-          {mobileLinks.map(([label, href], index) => (
-            <a href={href} onClick={closeMenu} key={href}>
+        <nav className="mobile-nav-links" aria-label="Mobile site pages">
+          {mobileLinks.map(({ label, path }, index) => (
+            <Link to={path} onClick={closeMenu} key={path}>
               <span className="mobile-link-index">{String(index + 1).padStart(2, '0')}</span>
               <span>{label}</span>
-            </a>
+            </Link>
           ))}
           <a href={applicationConfig.loginUrl} onClick={closeMenu}>
             <span className="mobile-link-index">{String(mobileLinks.length + 1).padStart(2, '0')}</span>
