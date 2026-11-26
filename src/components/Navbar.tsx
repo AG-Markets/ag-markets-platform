@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { Brand } from './Brand'
+import { applicationConfig } from '../config/application'
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
@@ -65,7 +66,6 @@ export function Navbar() {
     ['Investor Intelligence', '#investors'],
     ['AG Academy', '#academy'],
     ['About', '#about'],
-    ['Login', '#login'],
   ]
 
   return (
@@ -97,8 +97,8 @@ export function Navbar() {
               <a href="#about">About</a>
             </span>
           </span>
-          <a className="nav-login" href="#login" onClick={() => setOpen(false)}>Login</a>
-          <a className="button button-small" href="#get-started" onClick={() => setOpen(false)}>Get Started</a>
+          <a className="nav-login" href={applicationConfig.loginUrl} onClick={() => setOpen(false)}>Login</a>
+          <a className="button button-small" href={applicationConfig.registrationUrl} onClick={() => setOpen(false)}>Get Started</a>
         </nav>
       </div>
       <aside
@@ -126,8 +126,12 @@ export function Navbar() {
               <span>{label}</span>
             </a>
           ))}
+          <a href={applicationConfig.loginUrl} onClick={closeMenu}>
+            <span className="mobile-link-index">{String(mobileLinks.length + 1).padStart(2, '0')}</span>
+            <span>Login</span>
+          </a>
         </nav>
-        <a className="mobile-nav-cta" href="#get-started" onClick={closeMenu}>
+        <a className="mobile-nav-cta" href={applicationConfig.registrationUrl} onClick={closeMenu}>
           Get Started
           <span aria-hidden="true">→</span>
         </a>

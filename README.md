@@ -1,36 +1,13 @@
-<<<<<<< HEAD
-# React + TypeScript + Vite
+# AG Markets Public Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+The AG Markets public website introduces and explains the platform. Interactive financial tools, monitoring, and account functionality belong in a separately developed AG Markets application.
 
-Currently, two official plugins are available:
+## Application integration
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Application destinations are centralized in [`src/config/application.ts`](src/config/application.ts). Its `example.com` URLs are temporary placeholders; replace them with the deployed application and support URLs when available. Login, registration, product-access, and support links read from this configuration.
 
-## React Compiler
+## Development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
-=======
-# ag-markets-platform
->>>>>>> e1770b3f110dab83c738375149e59b84d0650786
+- `npm run dev` starts the local Vite development server.
+- `npm run build` type-checks and builds the website.
+- `npm run lint` runs Oxlint.

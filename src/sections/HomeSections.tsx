@@ -3,6 +3,7 @@ import {
   Check, Crosshair, GraduationCap, Landmark, Layers3, LineChart,
   PieChart, ShieldCheck, Target, Wallet,
 } from 'lucide-react'
+import { applicationConfig } from '../config/application'
 
 const sectionHeading = (eyebrow: string, title: string, copy: string) => (
   <div className="section-heading">
@@ -160,7 +161,7 @@ export function TradingTools() {
             <article className="tool-card" key={title}>
               <div className="icon-box"><Icon size={22} /></div>
               <h3>{title}</h3><p>{copy}</p>
-              <a href="#get-started">Explore tool <ArrowRight size={14} /></a>
+              <a href={applicationConfig.applicationUrl}>Explore tool <ArrowRight size={14} /></a>
             </article>
           ))}
         </div>
@@ -229,7 +230,7 @@ export function Academy() {
               <div className="course-icon"><GraduationCap size={24} /></div>
               <div className="course-meta"><span>LEARNING PATH</span><span>{lessons}</span></div>
               <h3>{title}</h3><p>{copy}</p>
-              <a href="#get-started">View curriculum <ArrowRight size={14} /></a>
+              <a href={applicationConfig.applicationUrl}>View curriculum <ArrowRight size={14} /></a>
             </article>
           ))}
         </div>
@@ -268,7 +269,7 @@ export function Pricing() {
               <h3>{plan.name}</h3><p>{plan.copy}</p>
               <strong className="coming-soon">Pricing Coming Soon</strong>
               <ul>{plan.features.map((feature) => <li key={feature}><Check size={15} />{feature}</li>)}</ul>
-              <a className={plan.featured ? 'button' : 'button button-outline'} href="#get-started">Join Waitlist</a>
+              <a className={plan.featured ? 'button' : 'button button-outline'} href={applicationConfig.registrationUrl}>Join Waitlist</a>
             </article>
           ))}
         </div>
@@ -298,7 +299,6 @@ export function About() {
 export function FinalCta() {
   return (
     <section className="cta-section" id="get-started">
-      <span id="login" className="policy-anchor"></span>
       <div className="container cta-grid">
         <div>
           <div className="eyebrow"><span></span> Start with better information</div>
@@ -308,7 +308,7 @@ export function FinalCta() {
           <p>Discover a smarter approach to market intelligence, trading analysis and investment research.</p>
           <div className="hero-actions">
             <a className="button" href="#ai-intelligence">Explore AG Markets <ArrowRight size={17} /></a>
-            <a className="button button-white" href="#login">Get Started</a>
+            <a className="button button-white" href={applicationConfig.registrationUrl}>Get Started</a>
           </div>
         </div>
       </div>

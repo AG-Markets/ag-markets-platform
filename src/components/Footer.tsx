@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react'
 import { Brand } from './Brand'
+import { applicationConfig } from '../config/application'
 
 export function Footer() {
   return (
@@ -24,7 +25,7 @@ export function Footer() {
         <div>
           <h3>Company</h3>
           <a href="#about">About</a>
-          <a href="#contact">Contact <ArrowUpRight size={13} /></a>
+          <a href={applicationConfig.supportUrl}>Contact <ArrowUpRight size={13} /></a>
           <a href="#privacy">Privacy Policy</a>
           <a href="#terms">Terms & Conditions</a>
           <a href="#disclaimer">Risk Disclaimer</a>
@@ -34,7 +35,6 @@ export function Footer() {
         <span id="privacy" className="policy-anchor"></span>
         <span id="terms" className="policy-anchor"></span>
         <span id="disclaimer" className="policy-anchor"></span>
-        <span id="contact" className="policy-anchor"></span>
         <span>© 2026 AG Markets. All rights reserved.</span>
         <span>Trading involves risk. Past performance is not indicative of future results.</span>
       </div>
