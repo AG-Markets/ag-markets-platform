@@ -105,6 +105,26 @@ export function MarketingPage({ page }: { page: MarketingPageContent }) {
         </div>
       </section>
 
+      {page.education && (
+        <section className="page-section page-education">
+          <div className="container">
+            <div className="page-section-heading">
+              <div className="eyebrow"><span></span>Financial education</div>
+              <h2>{page.path === '/academy' ? 'Six foundations for informed learning.' : 'The concepts behind this subject.'}</h2>
+              <p>General educational information only. Examples are hypothetical and are not recommendations or predictions.</p>
+            </div>
+            <div className="education-grid">
+              {page.education.map((lesson) => (
+                <article className="education-card" key={lesson.title}>
+                  <h3>{lesson.title}</h3>
+                  <p>{lesson.copy}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="page-section page-value">
         <div className="container page-value-grid">
           <div>

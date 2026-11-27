@@ -10,6 +10,7 @@ import { legalPages, marketingPages } from './data/sitePages'
 function RouteMetadata({ title, description }: { title: string; description: string }) {
   useEffect(() => {
     document.title = title
+    const canonicalUrl = `https://agmarkets.co.za${window.location.pathname}`
     let meta = document.querySelector<HTMLMetaElement>('meta[name="description"]')
     if (!meta) {
       meta = document.createElement('meta')
@@ -17,6 +18,30 @@ function RouteMetadata({ title, description }: { title: string; description: str
       document.head.append(meta)
     }
     meta.content = description
+
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
+    if (!canonical) {
+      canonical = document.createElement('link')
+      canonical.rel = 'canonical'
+      document.head.append(canonical)
+    }
+    canonical.href = canonicalUrl
+
+    const setOpenGraph = (property: string, content: string) => {
+      let tag = document.querySelector<HTMLMetaElement>(`meta[property="${property}"]`)
+      if (!tag) {
+        tag = document.createElement('meta')
+        tag.setAttribute('property', property)
+        document.head.append(tag)
+      }
+      tag.content = content
+    }
+    setOpenGraph('og:type', 'website')
+    setOpenGraph('og:site_name', 'AG Markets')
+    setOpenGraph('og:title', title)
+    setOpenGraph('og:description', description)
+    setOpenGraph('og:url', canonicalUrl)
+    setOpenGraph('og:image', 'https://agmarkets.co.za/ag-markets-logo.png')
   }, [description, title])
   return null
 }

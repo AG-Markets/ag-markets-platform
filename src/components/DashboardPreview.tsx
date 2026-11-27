@@ -17,7 +17,7 @@ export function DashboardPreview() {
         <div className="dashboard-main">
           <div className="dashboard-heading">
             <div><span>MARKET OVERVIEW</span><strong>Global Markets</strong></div>
-            <button type="button">Live view <ChevronDown size={12} /></button>
+            <button type="button">Illustrative view <ChevronDown size={12} /></button>
           </div>
           <div className="market-cards">
             <div><span>EUR / USD</span><strong>1.0842</strong><small className="positive"><ArrowUpRight size={12} /> +0.34%</small></div>

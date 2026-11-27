@@ -8,9 +8,9 @@ export function Hero({ children }: { children: ReactNode }) {
     <section className="hero" id="home">
       <div className="container hero-grid">
         <div className="hero-copy">
-          <div className="eyebrow"><span></span> AI-powered financial intelligence</div>
+          <div className="eyebrow"><span></span> Planned AI-powered financial intelligence</div>
           <h1>Intelligence Beyond<br />the <em>Charts.</em></h1>
-          <p>Advanced AI financial intelligence, market analysis and risk management designed for a smarter approach to trading and investing.</p>
+          <p>Planned AI-assisted financial intelligence, market research and risk awareness for a more considered approach to trading and investing.</p>
           <div className="hero-actions">
             <Link className="button" to="/ai-intelligence">Explore AG Intelligence <ArrowRight size={17} /></Link>
             <a className="button button-outline" href={applicationConfig.registrationUrl}>Get Started</a>

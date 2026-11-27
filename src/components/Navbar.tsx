@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, CircleUserRound } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Brand } from './Brand'
 import { applicationConfig } from '../config/application'
@@ -81,6 +81,16 @@ export function Navbar() {
     <header className={`navbar${scrolled ? ' navbar-scrolled' : ''}`}>
       <div className="nav-inner">
         <Brand />
+        <div className="mobile-header-actions">
+          <a
+            className="mobile-account-button"
+            href={applicationConfig.loginUrl}
+            aria-label="Account"
+            title="Account"
+          >
+            <CircleUserRound size={20} strokeWidth={1.8} aria-hidden="true" />
+          </a>
+        </div>
         <button
           ref={toggleRef}
           className={`menu-button${open ? ' menu-button-open' : ''}`}

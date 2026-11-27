@@ -23,7 +23,7 @@ export function HomePage() {
       <section className="home-positioning">
         <div className="container home-positioning-grid">
           <div><div className="eyebrow"><span></span>A public introduction to AG Markets</div><h2>Understand the platform before you enter it.</h2></div>
-          <p>AG Markets brings together planned intelligence products for traders and investors. This website explains the ideas, shares educational context, and shows clearly labelled previews. Practical functionality belongs in a separate application.</p>
+          <p>AG Markets aims to make market research easier to understand by connecting context, analysis, risk awareness, and financial education. Markets generate more headlines, charts, and data than most people can assess at once; fragmented information can hide assumptions and exposure. This website explains the product vision and teaches foundational concepts. Any practical, interactive functionality belongs to a separate future application and is not operating here.</p>
         </div>
       </section>
       <section className="home-dashboard">

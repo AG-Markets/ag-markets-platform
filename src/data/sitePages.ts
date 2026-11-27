@@ -19,6 +19,7 @@ export interface MarketingPage {
   example: string
   metrics: { label: string; value: string }[]
   benefits: string[]
+  education?: { title: string; copy: string }[]
 }
 
 export const marketingPages: MarketingPage[] = [
@@ -54,6 +55,12 @@ export const marketingPages: MarketingPage[] = [
       { label: 'Output', value: 'Scenario brief' },
     ],
     benefits: ['Spend less time switching between research sources.', 'Make assumptions visible before acting.', 'Treat AI output as a starting point for verification.'],
+    education: [
+      { title: 'What AI-assisted analysis can do', copy: 'Language models can organise supplied information, explain terminology, compare stated scenarios, and help a researcher find follow-up questions. These are forms of assistance, not independent evidence that a market claim is true.' },
+      { title: 'Check the source and the timestamp', copy: 'An analysis is only as current and complete as its inputs. Confirm publication time, original source, units, instrument, and timeframe; a summary can omit context or misread ambiguous material.' },
+      { title: 'Look for uncertainty and alternatives', copy: 'A useful research process asks what evidence supports an interpretation, what contradicts it, and what would change the view. AI-generated confidence or fluent wording is not a probability guarantee.' },
+      { title: 'Keep human judgement responsible', copy: 'People must decide whether information is relevant to their objectives, circumstances, and risk capacity. Never treat generated text as personalised financial advice or an instruction to trade.' },
+    ],
   },
   {
     path: '/ai-analyst',
@@ -87,6 +94,15 @@ export const marketingPages: MarketingPage[] = [
       { label: 'Response', value: 'Two scenarios' },
     ],
     benefits: ['Turn broad questions into focused research.', 'See alternative interpretations before forming a view.', 'Keep risk and uncertainty in the conversation.'],
+    education: [
+      { title: 'Technical analysis', copy: 'Technical analysis studies historical price and volume behaviour to describe market conditions and possible scenarios. Indicators are transformations of past data; they do not establish what price must do next.' },
+      { title: 'Fundamental analysis', copy: 'Fundamental analysis considers economic conditions, policy, company finances, industry dynamics, and other factors that may affect an asset’s value. Relevant drivers differ across instruments and can already be reflected in prices.' },
+      { title: 'Trends and market structure', copy: 'A trend describes directional movement over a chosen timeframe. A sequence of higher swing highs and higher swing lows is often called an uptrend; lower highs and lower lows can describe a downtrend. Structure can differ across timeframes, so state which one is being analysed.' },
+      { title: 'Support and resistance', copy: 'Support and resistance are areas where price has previously met buying or selling interest. They are zones, not exact barriers: price can pass through them, reverse before reaching them, or briefly break and return.' },
+      { title: 'Momentum', copy: 'Momentum describes the pace or persistence of price movement. Oscillators and rate-of-change measures can help compare movement, but strong momentum may persist or reverse; an extreme reading alone is not a timing signal.' },
+      { title: 'Volatility', copy: 'Volatility describes the magnitude of price variation, not its direction. Wider movement can increase uncertainty and potential loss for a given position size, making the same stop distance or quantity inappropriate in different conditions.' },
+      { title: 'Use competing explanations', copy: 'Combine observations carefully: a breakout from resistance might indicate a change in structure, but it can also fail. Consider confirmation, liquidity, event risk, and an invalidation point without assuming any outcome.' },
+    ],
   },
   {
     path: '/market-radar',
@@ -120,6 +136,14 @@ export const marketingPages: MarketingPage[] = [
       { label: 'Status', value: 'Review context' },
     ],
     benefits: ['Keep selected markets visible in one place.', 'Distinguish a notification from a decision.', 'Spend attention according to a monitoring plan.'],
+    education: [
+      { title: 'Foreign exchange', copy: 'FX quotes express one currency relative to another. Exchange rates can respond to interest-rate expectations, inflation, employment, trade, risk appetite, and central-bank communication. Trading hours overlap across global centres, while liquidity and spreads vary.' },
+      { title: 'Indices and equities', copy: 'An equity index represents a defined group of shares under a particular weighting and calculation method; it is not the same as a single company. Individual equities can react to earnings, guidance, financing, sector conditions, and broader market sentiment.' },
+      { title: 'Commodities', copy: 'Commodity prices may reflect physical supply and demand, inventories, production costs, weather, transport, geopolitics, and futures-market structure. A futures contract has expiry and contract specifications that matter when interpreting its price.' },
+      { title: 'Crypto assets', copy: 'Crypto markets can trade continuously on multiple venues, with fragmented liquidity, changing market structure, and substantial price variation. Exchange, custody, operational, and regulatory risks are distinct from ordinary price risk.' },
+      { title: 'Volatility, breakouts, and trends', copy: 'A volatility increase means larger price changes, not a directional forecast. A breakout is movement beyond a previously observed range or level; it may continue, stall, or fail. Compare it with the chosen timeframe, volume or liquidity context, and a pre-defined monitoring plan.' },
+      { title: 'Economic events and monitoring', copy: 'Scheduled releases and policy decisions can create rapid repricing, wider spreads, or gaps, especially when results differ from expectations. A calendar event does not predict direction; note its timing, affected markets, and the possibility that expectations are already priced in.' },
+    ],
   },
   {
     path: '/risk-intelligence',
@@ -153,6 +177,14 @@ export const marketingPages: MarketingPage[] = [
       { label: 'Result', value: 'Illustrative only' },
     ],
     benefits: ['Make risk an explicit part of preparation.', 'Compare a new idea with existing exposure.', 'Build repeatable habits without assuming outcomes.'],
+    education: [
+      { title: 'Position sizing and lot size', copy: 'A risk budget can be defined as account equity multiplied by the chosen risk fraction. For illustration, 1% of a hypothetical $10,000 account is $100. If a USD-quoted FX pair has an assumed pip value of $10 per standard lot and the stop is 20 pips away, estimated size is $100 ÷ (20 × $10) = 0.5 standard lots, before spread, commission, slippage, and conversion effects. This is a hypothetical calculation, not a recommendation; contract specifications and account currency change the result.' },
+      { title: 'Stop-losses and gaps', copy: 'A stop-loss marks a level at which a trade thesis or risk plan is no longer acceptable. A stop order may execute at a different price during gaps or fast markets, so it cannot guarantee a maximum loss. Broker rules and instrument mechanics also matter.' },
+      { title: 'Risk/reward is not probability', copy: 'If a hypothetical setup risks 20 pips to target 40 pips, its gross planned reward-to-risk is 2:1 (often written risk/reward 1:2). That ratio says nothing by itself about the chance of reaching the target; costs and execution affect realised results.' },
+      { title: 'Pip value depends on the contract', copy: 'For many standard FX contracts, one pip is 0.0001, while JPY pairs commonly quote a pip as 0.01; fractional pip conventions also exist. Pip value depends on position units, pair, quote currency, and the account’s conversion rate. Verify the instrument specification rather than assuming a universal dollar value.' },
+      { title: 'Drawdown and recovery', copy: 'Drawdown measures a decline from a prior account peak to a later trough. A hypothetical fall from $10,000 to $8,000 is a 20% drawdown; returning from $8,000 to $10,000 requires a 25% gain. This asymmetry is why limiting losses and total exposure matters.' },
+      { title: 'Portfolio exposure', copy: 'Several positions can share the same underlying driver even when their symbols differ. Review notional exposure, leverage, currency denomination, correlation, and event concentration together; diversification can reduce some risks but cannot remove market loss.' },
+    ],
   },
   {
     path: '/trading-tools',
@@ -186,6 +218,14 @@ export const marketingPages: MarketingPage[] = [
       { label: 'Use', value: 'Planning aid' },
     ],
     benefits: ['Bring routine planning steps into a consistent workflow.', 'See which assumptions drive a calculation.', 'Keep execution and order placement outside the public website.'],
+    education: [
+      { title: 'What a calculator is for', copy: 'A calculator applies a stated formula to inputs; it does not determine whether an assumption is sensible or whether a trade is suitable. Check units, account currency, contract size, fees, and rounding before relying on a result.' },
+      { title: 'Position-size planning', copy: 'A common estimate is risk amount divided by stop distance multiplied by value per unit of movement. For FX expressed in pips: position lots = risk budget ÷ (stop pips × pip value per lot). The pip value must match the specific pair, contract, and account currency.' },
+      { title: 'Pips and lots', copy: 'A pip is a conventional unit of FX price movement, but quote precision and pip definitions vary by instrument. A standard FX lot is commonly 100,000 base-currency units, with mini and micro lots commonly one-tenth and one-hundredth of that size; brokers may offer different increments.' },
+      { title: 'Risk/reward worksheet', copy: 'Compare the distance from entry to a possible stop with the distance to a hypothetical target. A 15-point risk against a 30-point target is a 1:2 risk-to-reward comparison before costs, not a forecast or evidence that the target is likely.' },
+      { title: 'Trading journal', copy: 'Record the plan before entry, the rationale, risk assumptions, execution details, and later review. Separate process adherence from outcome: a planned trade can lose, and a profitable result can still involve poor risk discipline.' },
+      { title: 'Availability on this website', copy: 'The current public website contains explanations and illustrative displays only. It does not provide working calculators, order placement, live market connections, or a functioning trading journal.' },
+    ],
   },
   {
     path: '/investor-intelligence',
@@ -219,6 +259,14 @@ export const marketingPages: MarketingPage[] = [
       { label: 'Next step', value: 'Independent review' },
     ],
     benefits: ['Connect individual research with portfolio-wide context.', 'Notice concentration questions earlier.', 'Keep long-term monitoring distinct from short-term trading.'],
+    education: [
+      { title: 'Diversification', copy: 'Diversification spreads exposure across assets, sectors, issuers, regions, or return drivers. It can reduce the effect of a loss concentrated in one holding, but correlations can rise during stress and diversification cannot eliminate market risk.' },
+      { title: 'Asset allocation', copy: 'Asset allocation is the mix of broad asset classes in a portfolio. It should be considered against an investor’s goals, time horizon, liquidity needs, risk tolerance, and constraints; there is no universally suitable allocation.' },
+      { title: 'Investment horizon and liquidity', copy: 'A longer horizon may allow more time to withstand fluctuations, but it does not ensure recovery or make an investment appropriate. Match the accessibility and volatility of assets to when funds may be needed.' },
+      { title: 'Risk and return', copy: 'Higher expected return generally involves accepting uncertainty or risk, but taking more risk does not guarantee a higher realised return. Distinguish nominal from inflation-adjusted return and account for fees, taxes, and cash flows when comparing performance.' },
+      { title: 'Correlation and concentration', copy: 'Correlation describes how returns have moved together over a selected historical period; it can change and does not prove a causal relationship. Holdings that look different may share exposure to the same industry, currency, rate, or economic factor.' },
+      { title: 'Review the whole portfolio', copy: 'Consider position weights, underlying exposures, cash needs, costs, and rebalancing rules together. Any portfolio illustration on this website is fictional and cannot assess personal suitability.' },
+    ],
   },
   {
     path: '/performance-analytics',
@@ -252,6 +300,14 @@ export const marketingPages: MarketingPage[] = [
       { label: 'Focus', value: 'Process review' },
     ],
     benefits: ['Look beyond a win-rate headline.', 'Use consistent periods for comparison.', 'Make measured reflection part of a trading routine.'],
+    education: [
+      { title: 'Win rate', copy: 'Win rate is winning trades divided by all closed trades in the defined sample. It ignores the size of wins and losses: a high win rate can still lose money if occasional losses are sufficiently large.' },
+      { title: 'Expectancy', copy: 'A simple per-trade expectancy is (win probability × average win) − (loss probability × average loss), with costs included for a realistic estimate. For illustration, a 40% win rate, $150 average win, and $80 average loss gives 0.4 × $150 − 0.6 × $80 = $12 per trade before any omitted costs; a small sample may not represent future outcomes.' },
+      { title: 'Profit factor and average win/loss', copy: 'Profit factor is gross profits divided by gross losses over a chosen sample. Average win-to-average loss compares mean winning and losing trade sizes. Neither metric describes risk on open positions or guarantees that the sample will repeat.' },
+      { title: 'Equity curve', copy: 'An equity curve plots account value through time, ideally including deposits, withdrawals, fees, and open-position treatment consistently. Examine both the overall path and the variability; a rising endpoint can conceal long or severe declines.' },
+      { title: 'Maximum drawdown', copy: 'Maximum drawdown is the largest peak-to-trough decline in the measured equity series, usually expressed as a percentage of the peak. Results depend on the date range, sampling frequency, and whether intraperiod lows and open positions are included.' },
+      { title: 'Interpret metrics together', copy: 'Use enough observations, consistent definitions, and comparable periods. Include spread, commission, slippage, and leverage where available, and treat historical analysis as a description of a sample—not a forecast or verified AG Markets performance.' },
+    ],
   },
   {
     path: '/academy',
@@ -285,6 +341,14 @@ export const marketingPages: MarketingPage[] = [
       { label: 'Purpose', value: 'Financial education' },
     ],
     benefits: ['Follow a more coherent learning sequence.', 'Build vocabulary before exploring advanced tools.', 'Learn with risk and uncertainty included.'],
+    education: [
+      { title: 'Lesson 1 — Forex fundamentals', copy: 'An FX pair quotes one currency in terms of another: in EUR/USD, EUR is the base and USD the quote currency. If the quote rises, one euro buys more dollars. Learn bid and ask, spread, pip, lot, and leverage before interpreting a price move. Leverage magnifies losses as well as gains.' },
+      { title: 'Lesson 2 — Technical analysis', copy: 'Start by selecting an instrument and timeframe. Mark observable swing highs and lows, then describe whether price is ranging or forming higher highs and lows. Support and resistance are zones inferred from prior behaviour, not guaranteed turning points. Indicators summarise price data and should not be treated as independent proof.' },
+      { title: 'Lesson 3 — Risk management', copy: 'Choose a hypothetical maximum loss before considering quantity. For example, 1% of a $10,000 example balance is $100; with a 20-pip stop and an assumed $10-per-pip value per standard lot, the arithmetic gives 0.5 lots before costs and contract-specific adjustments. Stops can slip, so the example does not cap actual loss.' },
+      { title: 'Lesson 4 — Trading psychology', copy: 'Fear, overconfidence, and loss aversion can affect decisions. A written plan, pre-defined risk limit, and review routine can make behaviour easier to examine, but they do not remove emotion or guarantee discipline. Record decisions and process rather than judging skill from one outcome.' },
+      { title: 'Lesson 5 — Fundamental analysis', copy: 'Economic releases are interpreted relative to expectations, prior data, and revisions. Interest-rate decisions, inflation, employment, and growth can affect currencies and other assets through several channels. Company analysis adds earnings, cash flow, debt, and sector conditions; no single data point dictates price.' },
+      { title: 'Lesson 6 — Investing and portfolios', copy: 'An investment portfolio combines holdings with different risks and time horizons. Asset allocation and diversification can manage concentration, while correlations and risks can change. Consider liquidity, fees, taxes, and personal objectives, and seek qualified advice for decisions specific to your circumstances.' },
+    ],
   },
   {
     path: '/about',
@@ -318,6 +382,13 @@ export const marketingPages: MarketingPage[] = [
       { label: 'Previews', value: 'Illustrative' },
     ],
     benefits: ['Understand the platform before registering.', 'Find product information without entering an app dashboard.', 'See what is planned and what remains a preview.'],
+    education: [
+      { title: 'Purpose', copy: 'AG Markets’ vision is to make financial-market research and learning more understandable by bringing context, clear explanations, and risk awareness into a coherent product story.' },
+      { title: 'The problem it aims to address', copy: 'Market information is dispersed across headlines, charts, data sources, and personal notes. This can make it difficult to compare assumptions, distinguish evidence from interpretation, or see how an idea relates to risk.' },
+      { title: 'How to use this public website', copy: 'The current website introduces AG Markets and provides general educational material. Product screens, market figures, and scenarios shown here are illustrative; this site is not a live-data service or operational financial application.' },
+      { title: 'A separate future application', copy: 'Practical tools and interactive product functionality are planned for a separate AG Markets application. Describing a proposed feature here does not mean it is built, available, or producing financial analysis today.' },
+      { title: 'A guiding boundary', copy: 'Technology can help organise information, but it cannot remove uncertainty or replace informed human judgement. No product description is a promise of performance, guaranteed AI accuracy, or personalised advice.' },
+    ],
   },
 ]
 
@@ -412,11 +483,13 @@ export const legalPages: LegalPage[] = [
 
 export const faqItems = [
   { question: 'What is AG Markets?', answer: 'AG Markets is a planned financial intelligence platform with product concepts spanning market research, risk awareness, trading utilities, investor context, and education. This website explains those concepts; it is not the application itself.' },
-  { question: 'Are the product previews live tools?', answer: 'No. The dashboards, figures, sample conversations, and scenarios shown here are illustrative website previews. They are not connected to live data and do not perform calculations or monitoring.' },
-  { question: 'Where will I access practical tools?', answer: 'Practical functionality belongs in a separately developed AG Markets application. Login and registration links currently use clearly temporary example URLs set in the central application configuration.' },
-  { question: 'Can AG Markets give me investment advice?', answer: 'Website content is general information and education, not individual financial advice or a recommendation. Decisions should reflect your circumstances and be independently checked.' },
-  { question: 'How much do membership plans cost?', answer: 'Pricing is not final. The plan descriptions on this website communicate intended benefit levels only and should not be interpreted as an available subscription offer.' },
-  { question: 'How do I contact AG Markets?', answer: 'Use the Contact page to find the configured support destination. The current destination is a placeholder and must be replaced with a monitored support channel before launch.' },
+  { question: 'Is the AG Markets application available?', answer: 'No application functionality is provided by this project. The current product is a public information and education website; any future application will be separate. Availability has not been announced.' },
+  { question: 'Are the product previews live tools or live market data?', answer: 'No. Interface screens, prices, charts, sample conversations, and scenarios on this website are illustrative. They are not connected to market data, do not calculate positions, and do not monitor or execute trades.' },
+  { question: 'Can AI analysis guarantee an accurate forecast?', answer: 'No. AI-assisted analysis can omit context, use outdated or incorrect inputs, or produce a plausible but mistaken explanation. It cannot guarantee accuracy or market outcomes; verify source information and use independent human judgement.' },
+  { question: 'Does AG Markets provide personal investment or trading advice?', answer: 'No. Website material is general education and product information, not advice tailored to your finances, objectives, or experience. Consider independent qualified advice where you need guidance for your circumstances.' },
+  { question: 'Are the examples or trading results real?', answer: 'No. Financial figures, instruments, charts, account values, and outcomes in previews are hypothetical illustrations, not live data, customer results, or AG Markets trading performance.' },
+  { question: 'How much will AG Markets cost?', answer: 'No subscription price or purchase offer is available. Pricing and any final membership details will be announced when the separate application is ready.' },
+  { question: 'How can I contact AG Markets?', answer: 'The Contact page links to the support destination currently configured for this website. That destination is a placeholder, not a confirmed monitored contact channel; do not send passwords, payment details, or sensitive financial information.' },
 ]
 
 export const pricingPlans = [

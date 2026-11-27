@@ -347,7 +347,7 @@ export function AGTradingAnimation({
           ))}
         </div>
         <figcaption className="ag-animation-disclaimer" id={`${id}-disclaimer`}>
-          Illustrative trading scenario — hypothetical data. Not actual trading results. Trading involves risk and losses are possible.
+          Illustrative example — hypothetical data, not actual trading results. Trading involves risk and losses are possible.
         </figcaption>
       </div>
     </figure>

@@ -1039,31 +1039,80 @@ main > section.reveal-visible {
 .menu-button {
   display: none;
   position: relative;
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.025);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
   color: #FFFFFF;
   cursor: pointer;
-  transition: border-color 0.22s ease, background 0.22s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: color 0.22s ease, transform 0.16s ease;
+}
+
+.mobile-header-actions {
+  display: none;
+}
+
+.mobile-account-button {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(1, 171, 65, 0.34);
+  border-radius: 50%;
+  background: rgba(1, 171, 65, 0.07);
+  color: #FFFFFF;
+  transition: border-color 0.22s ease, background 0.22s ease, transform 0.16s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-account-button svg {
+  color: #FFFFFF;
+  transition: color 0.22s ease;
+}
+
+.mobile-account-button:hover,
+.mobile-account-button:active {
+  border-color: rgba(1, 171, 65, 0.82);
+  background: rgba(1, 171, 65, 0.14);
+}
+
+.mobile-account-button:active {
+  transform: scale(0.94);
+}
+
+.mobile-account-button:focus-visible {
+  outline: 2px solid #01AB41;
+  outline-offset: 3px;
 }
 
 .menu-button:hover {
-  border-color: rgba(1, 171, 65, 0.75);
-  background: rgba(1, 171, 65, 0.07);
+  color: #01AB41;
+}
+
+.menu-button:active {
+  transform: scale(0.94);
 }
 
 .menu-button span {
   position: absolute;
-  left: 12px;
+  left: 14px;
+  top: calc(50% - 0.75px);
   width: 20px;
   height: 1.5px;
   border-radius: 2px;
   background: #FFFFFF;
-  transition: transform 0.32s cubic-bezier(.22,.61,.36,1), opacity 0.18s ease, width 0.22s ease;
+  transition: background-color 0.22s ease, transform 0.32s cubic-bezier(.22,.61,.36,1), opacity 0.18s ease, width 0.22s ease;
+}
+
+.menu-button:hover span {
+  background: #01AB41;
 }
 
 .menu-button span:nth-child(1) {
@@ -1080,10 +1129,11 @@ main > section.reveal-visible {
 }
 
 .menu-button-open {
-  border-color: rgba(1, 171, 65, 0.5);
-  background: rgba(1, 171, 65, 0.08);
-  opacity: 0;
-  pointer-events: none;
+  color: #01AB41;
+}
+
+.menu-button-open span {
+  background: #01AB41;
 }
 
 .menu-button-open span:nth-child(1) {
@@ -1164,6 +1214,14 @@ main > section.reveal-visible {
     display: flex;
   }
 
+  .mobile-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    margin-right: 8px;
+  }
+
   .mobile-navigation {
     position: fixed;
     z-index: 210;
@@ -1225,7 +1283,11 @@ main > section.reveal-visible {
   .mobile-nav-links {
     display: flex;
     flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
     margin-top: clamp(18px, 4vh, 38px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .mobile-nav-links a {

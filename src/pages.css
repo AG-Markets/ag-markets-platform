@@ -980,6 +980,37 @@ main > section.reveal-visible {
   font-size: 15px;
 }
 
+.page-education {
+  background: #f5f7f6;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.education-card {
+  padding: 25px;
+  border: 1px solid #dfe7e3;
+  background: #fff;
+}
+
+.education-card h3 {
+  margin: 0 0 12px;
+  color: var(--ag-navy);
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.education-card p {
+  margin: 0;
+  color: #53656f;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
 .page-value {
   background: #f5f7f6;
 }
@@ -1799,6 +1830,10 @@ main > section.reveal-visible {
 
   .page-feature-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .education-grid {
+    grid-template-columns: 1fr;
   }
 
   .page-cta-inner {
