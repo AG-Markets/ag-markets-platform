@@ -1,6 +1,7 @@
 :root {
   --ag-navy: #000D18;
   --ag-green: #01AB41;
+  --ag-green-ink: #007D31;
   --ag-white: #FFFFFF;
   --ink: #001B2E;
   --muted: #5b6b75;
@@ -21,13 +22,27 @@ body { margin: 0; min-width: 320px; background: #fff; }
 button, input { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 a { color: inherit; text-decoration: none; }
+.skip-link {
+  position: fixed;
+  z-index: 200;
+  top: 10px;
+  left: 10px;
+  padding: 12px 16px;
+  transform: translateY(-160%);
+  border: 2px solid var(--ag-green);
+  background: #fff;
+  color: var(--ag-navy);
+  font-size: 13px;
+  font-weight: 700;
+}
+.skip-link:focus-visible { transform: translateY(0); outline: 2px solid #fff; outline-offset: 3px; }
 .container { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
 .section { padding: 112px 0; }
 .section-tint { background: var(--soft); }
 .button {
   min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 9px;
   padding: 0 20px; border: 1px solid var(--ag-green); border-radius: 6px;
-  background: var(--ag-green); color: #fff; font-size: 14px; font-weight: 750;
+  background: var(--ag-green); color: var(--ag-navy); font-size: 14px; font-weight: 750;
   transition: .2s ease;
 }
 .button:hover { background: #018f37; border-color: #018f37; transform: translateY(-1px); }
@@ -51,13 +66,13 @@ a { color: inherit; text-decoration: none; }
 .nav-dropdown { position: absolute; top: 68px; right: -12px; width: 150px; padding: 8px; background: #fff; border-radius: 6px; box-shadow: 0 15px 40px rgba(0,27,46,.18); opacity: 0; visibility: hidden; transform: translateY(-5px); transition: .16s; }
 .nav-more:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
 .nav-dropdown a { display: block; color: var(--ink); padding: 9px 10px; border-radius: 4px; }
-.nav-dropdown a:hover { background: var(--soft); color: var(--ag-green); }
+.nav-dropdown a:hover { background: var(--soft); color: var(--ag-green-ink); }
 .nav-login { border-left: 1px solid rgba(255,255,255,.16); padding-left: 16px; }
 .menu-button { display: none; border: 0; background: none; color: #fff; }
 
 .hero { min-height: 660px; display: flex; align-items: center; overflow: hidden; background: linear-gradient(120deg, #fbfdfc 0%, #fff 70%); border-bottom: 1px solid #edf1ef; }
 .hero-grid { display: grid; grid-template-columns: .88fr 1.12fr; align-items: center; gap: 52px; padding: 74px 0 82px; }
-.eyebrow { display: flex; align-items: center; gap: 9px; color: var(--ag-green); font-size: 11px; font-weight: 800; letter-spacing: 1.7px; text-transform: uppercase; }
+.eyebrow { display: flex; align-items: center; gap: 9px; color: var(--ag-green-ink); font-size: 11px; font-weight: 800; letter-spacing: 1.7px; text-transform: uppercase; }
 .eyebrow > span { width: 25px; height: 2px; background: var(--ag-green); }
 .hero h1 { margin: 22px 0 20px; font-size: clamp(48px, 5vw, 72px); line-height: .98; letter-spacing: -4.5px; }
 .hero h1 em, .cta-section h2 em { color: var(--ag-green); font-style: normal; }
@@ -80,13 +95,13 @@ a { color: inherit; text-decoration: none; }
 .dashboard-heading div { display: flex; flex-direction: column; }
 .dashboard-heading div span { color: #97a49e; font-size: 7px; letter-spacing: 1.2px; }
 .dashboard-heading div strong { margin-top: 3px; font-size: 14px; }
-.dashboard-heading button { height: 28px; border: 1px solid #e2e8e5; background: #fff; border-radius: 4px; display: flex; align-items: center; gap: 5px; color: #718078; font-size: 8px; }
+.dashboard-heading > span { height: 28px; display: inline-flex; align-items: center; padding: 0 8px; border: 1px solid #e2e8e5; background: #fff; border-radius: 4px; color: #718078; font-size: 8px; letter-spacing: .04em; }
 .market-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 14px; }
 .market-cards > div { height: 68px; display: grid; grid-template-columns: 1fr auto; align-content: center; padding: 10px; border: 1px solid #e7ece9; border-radius: 5px; }
 .market-cards span { grid-column: 1/-1; color: #87958f; font-size: 8px; }
 .market-cards strong { margin-top: 5px; font-size: 12px; }
 .market-cards small { margin-top: 6px; display: flex; align-items: center; font-size: 8px; }
-.positive { color: var(--ag-green); }
+.positive { color: var(--ag-green-ink); }
 .negative { color: #8a3b32; }
 .dashboard-panels { display: grid; grid-template-columns: 1.55fr .75fr; gap: 8px; margin-top: 9px; }
 .chart-panel, .ai-panel { height: 210px; border: 1px solid #e7ece9; border-radius: 5px; }
@@ -250,7 +265,7 @@ a { color: inherit; text-decoration: none; }
 
 .about-section { border-top: 1px solid #edf1ef; }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
-.text-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 24px; color: var(--ag-green); font-size: 12px; font-weight: 800; }
+.text-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 24px; color: var(--ag-green-ink); font-size: 12px; font-weight: 800; }
 .principles { border-top: 1px solid var(--line); }
 .principles > div { min-height: 112px; display: grid; grid-template-columns: 60px 1fr; align-items: center; border-bottom: 1px solid var(--line); }
 .principles > div > strong { color: var(--ag-green); font-size: 12px; }
@@ -270,6 +285,7 @@ a { color: inherit; text-decoration: none; }
 .footer-grid > div:not(.footer-brand) { display: flex; flex-direction: column; }
 .footer-grid > div:not(.footer-brand) a { display: flex; align-items: center; gap: 4px; margin-bottom: 11px; color: #bac6ca; font-size: 11px; }
 .footer-grid > div:not(.footer-brand) a:hover { color: #49d77b; }
+.footer-unavailable { max-width: 180px; margin: 0; color: #91a1a7; font-size: 11px; line-height: 1.65; }
 .footer-bottom { min-height: 64px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,.1); color: #91a1a7; font-size: 9px; }
 
 @media (max-width: 1120px) {
@@ -493,7 +509,7 @@ body {
   font-weight: 650;
 }
 
-.dashboard-heading button {
+.dashboard-heading > span {
   height: 30px;
   border-radius: 3px;
   color: #53656f;
@@ -1048,7 +1064,7 @@ main > section.reveal-visible {
   border-radius: 50%;
   background: transparent;
   box-shadow: none;
-  color: #FFFFFF;
+  color: var(--ag-navy);
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
@@ -1064,10 +1080,15 @@ main > section.reveal-visible {
   place-items: center;
   width: 42px;
   height: 42px;
+  padding: 0;
   border: 1px solid rgba(1, 171, 65, 0.34);
   border-radius: 50%;
   background: rgba(1, 171, 65, 0.07);
   color: #FFFFFF;
+  font: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
   transition: border-color 0.22s ease, background 0.22s ease, transform 0.16s ease;
   -webkit-tap-highlight-color: transparent;
 }
@@ -1090,6 +1111,11 @@ main > section.reveal-visible {
 .mobile-account-button:focus-visible {
   outline: 2px solid #01AB41;
   outline-offset: 3px;
+}
+
+.mobile-account-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.78;
 }
 
 .menu-button:hover {

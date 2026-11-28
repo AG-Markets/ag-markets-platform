@@ -8,6 +8,7 @@ export interface MarketingPage {
   eyebrow: string
   heading: string
   intro: string
+  intendedAudience?: string
   variant: PageVariant
   problemTitle: string
   problem: string
@@ -31,6 +32,7 @@ export const marketingPages: MarketingPage[] = [
     eyebrow: 'AG Intelligence',
     heading: 'More context for every market decision.',
     intro: 'AG Intelligence is the planned research layer of AG Markets: a way to bring market questions, relevant context, and structured scenarios into one considered workflow.',
+    intendedAudience: 'People who research markets across multiple sources and want to organise questions, assumptions, and alternative explanations.',
     variant: 'split',
     problemTitle: 'Information is abundant. Useful context is harder to find.',
     problem: 'Traders and investors often move between headlines, charts, notes, and portfolio views. The result can be fragmented research, overlooked assumptions, and decisions made without a clear record of why.',
@@ -70,6 +72,7 @@ export const marketingPages: MarketingPage[] = [
     eyebrow: 'AG AI Analyst',
     heading: 'Ask better questions of the markets.',
     intro: 'AG AI Analyst is a planned conversational research assistant for traders and investors who want to explore price action, market drivers, and possible scenarios with their assumptions in view.',
+    intendedAudience: 'Traders and investors who want to study a market question, understand analytical concepts, and compare possible interpretations.',
     variant: 'editorial',
     problemTitle: 'A chart can show movement without explaining its context.',
     problem: 'One indicator rarely tells the whole story. A fast market move may reflect positioning, scheduled events, liquidity, or a change in technical structure—and those possibilities deserve separate consideration.',
@@ -112,6 +115,7 @@ export const marketingPages: MarketingPage[] = [
     eyebrow: 'AG Market Radar',
     heading: 'A clearer view of what is changing.',
     intro: 'AG Market Radar is a planned market-awareness workspace that would help users follow selected instruments and review notable changes without treating every fluctuation as an opportunity.',
+    intendedAudience: 'People who monitor selected markets and want to distinguish a change worth reviewing from ordinary movement.',
     variant: 'dark',
     problemTitle: 'Too many alerts can hide the few that matter.',
     problem: 'Monitoring multiple markets can create noise: repeated price notifications, fragmented watchlists, and little explanation of why a move might deserve attention.',
@@ -153,6 +157,7 @@ export const marketingPages: MarketingPage[] = [
     eyebrow: 'AG Risk Intelligence',
     heading: 'Put the downside into the plan.',
     intro: 'AG Risk Intelligence is the planned risk-management area of AG Markets. It is designed to help people examine exposure and trade assumptions before they commit capital.',
+    intendedAudience: 'Traders and investors who want to understand position risk, portfolio exposure, and the assumptions behind a scenario.',
     variant: 'dark',
     problemTitle: 'A promising idea is not a complete risk plan.',
     problem: 'Position size, stop distance, portfolio exposure, and the possibility of loss all affect a decision. Considering them separately can obscure how much capital is actually at risk.',
@@ -194,6 +199,7 @@ export const marketingPages: MarketingPage[] = [
     eyebrow: 'AG Trading Tools',
     heading: 'Practical utilities for a more deliberate process.',
     intro: 'AG Trading Tools is a planned collection of educational and planning utilities to support preparation before a trade and reflection after it.',
+    intendedAudience: 'Learners and market participants who want to understand calculation inputs, record a process, and check instrument-specific assumptions.',
     variant: 'split',
     problemTitle: 'Small calculation errors can distort a trading plan.',
     problem: 'Instrument conventions, contract sizes, account currencies, and stop distances differ. A result only makes sense when its inputs and assumptions match the actual trading conditions.',
@@ -224,7 +230,7 @@ export const marketingPages: MarketingPage[] = [
       { title: 'Pips and lots', copy: 'A pip is a conventional unit of FX price movement, but quote precision and pip definitions vary by instrument. A standard FX lot is commonly 100,000 base-currency units, with mini and micro lots commonly one-tenth and one-hundredth of that size; brokers may offer different increments.' },
       { title: 'Risk/reward worksheet', copy: 'Compare the distance from entry to a possible stop with the distance to a hypothetical target. A 15-point risk against a 30-point target is a 1:2 risk-to-reward comparison before costs, not a forecast or evidence that the target is likely.' },
       { title: 'Trading journal', copy: 'Record the plan before entry, the rationale, risk assumptions, execution details, and later review. Separate process adherence from outcome: a planned trade can lose, and a profitable result can still involve poor risk discipline.' },
-      { title: 'Availability on this website', copy: 'The current public website contains explanations and illustrative displays only. It does not provide working calculators, order placement, live market connections, or a functioning trading journal.' },
+      { title: 'Availability on this website', copy: 'This public website includes limited browser-based position-sizing, risk/reward, and simplified pip-value education demonstrations on relevant pages. It does not provide a production trading calculator, instrument-specific pip-value service, brokerage connection, order placement, live market feed, or trading journal.' },
     ],
   },
   {
@@ -235,6 +241,7 @@ export const marketingPages: MarketingPage[] = [
     eyebrow: 'AG Investor Intelligence',
     heading: 'See holdings in the context of a portfolio.',
     intro: 'AG Investor Intelligence is a planned research and portfolio-awareness area for people who want to understand how holdings, asset allocation, and market themes relate to their investing objectives.',
+    intendedAudience: 'Investors who want to examine allocation, concentration, and shared risk drivers across a hypothetical or self-organised portfolio.',
     variant: 'editorial',
     problemTitle: 'Individual asset updates do not show the whole portfolio.',
     problem: 'A collection of interesting investments may still hide concentration, overlapping risks, or changes in allocation. Portfolio context helps frame what deserves a closer look.',
@@ -276,6 +283,7 @@ export const marketingPages: MarketingPage[] = [
     eyebrow: 'Performance Analytics',
     heading: 'Measure the process behind the outcome.',
     intro: 'Performance Analytics is a planned review space for traders who want to understand patterns in their own historical activity rather than judge a process from one result.',
+    intendedAudience: 'Traders reviewing a defined sample of historical activity and looking beyond a single win-rate or profit figure.',
     variant: 'split',
     problemTitle: 'A profitable period does not explain how it happened.',
     problem: 'Headline profit can hide inconsistent sizing, large drawdowns, or results driven by a small number of trades. Process measures provide a richer basis for personal review.',
@@ -317,15 +325,16 @@ export const marketingPages: MarketingPage[] = [
     eyebrow: 'AG Academy',
     heading: 'Build market knowledge one concept at a time.',
     intro: 'AG Academy is the planned education area of AG Markets, with structured learning paths intended to help people understand financial markets, analytical methods, and the risks involved.',
+    intendedAudience: 'People building financial-market knowledge, from foundational terminology through analysis, risk, and investing principles.',
     variant: 'editorial',
     problemTitle: 'Scattered tutorials make it difficult to build foundations.',
     problem: 'A learner can encounter unfamiliar terms without knowing what to study first or how one concept connects to the next. Structured lessons can provide a clearer learning sequence.',
     approachTitle: 'Progress from fundamentals to informed questions.',
     approach: 'The proposed Academy curriculum is designed around short learning paths, plain-language explanations, and hypothetical examples. It is educational material—not personalised financial advice or a promise of results.',
     steps: [
-      { title: 'Start with foundations', copy: 'Learn market participants, common instruments, and the basics of how prices are quoted.' },
-      { title: 'Study a method', copy: 'Explore research approaches such as technical analysis while considering their limitations.' },
-      { title: 'Practise risk awareness', copy: 'Use scenarios to understand uncertainty, leverage, and the possibility of loss.' },
+      { title: 'Start with risk', copy: 'Learn how position size, leverage, and possible loss relate before considering a market idea.' },
+      { title: 'Study market evidence', copy: 'Explore technical and fundamental analysis while considering their limits and uncertainty.' },
+      { title: 'Build investing foundations', copy: 'Learn terminology, diversification, investment horizons, and the role of independent judgement.' },
     ],
     features: [
       { title: 'Trading fundamentals', copy: 'Core vocabulary, order concepts, and market mechanics for new learners.' },
@@ -342,12 +351,13 @@ export const marketingPages: MarketingPage[] = [
     ],
     benefits: ['Follow a more coherent learning sequence.', 'Build vocabulary before exploring advanced tools.', 'Learn with risk and uncertainty included.'],
     education: [
-      { title: 'Lesson 1 — Forex fundamentals', copy: 'An FX pair quotes one currency in terms of another: in EUR/USD, EUR is the base and USD the quote currency. If the quote rises, one euro buys more dollars. Learn bid and ask, spread, pip, lot, and leverage before interpreting a price move. Leverage magnifies losses as well as gains.' },
-      { title: 'Lesson 2 — Technical analysis', copy: 'Start by selecting an instrument and timeframe. Mark observable swing highs and lows, then describe whether price is ranging or forming higher highs and lows. Support and resistance are zones inferred from prior behaviour, not guaranteed turning points. Indicators summarise price data and should not be treated as independent proof.' },
-      { title: 'Lesson 3 — Risk management', copy: 'Choose a hypothetical maximum loss before considering quantity. For example, 1% of a $10,000 example balance is $100; with a 20-pip stop and an assumed $10-per-pip value per standard lot, the arithmetic gives 0.5 lots before costs and contract-specific adjustments. Stops can slip, so the example does not cap actual loss.' },
+      { title: 'Lesson 1 — Risk management and position sizing', copy: 'Choose a hypothetical loss budget before considering quantity. For illustration, 1% of a $10,000 account is $100. If a USD-quoted FX pair has an assumed $10 pip value per standard lot and a 20-pip stop, $100 ÷ (20 × $10) = 0.5 standard lots before costs and contract-specific adjustments. A stop may slip; this example does not cap actual loss or recommend a position.' },
+      { title: 'Lesson 2 — Technical analysis', copy: 'Select an instrument and timeframe, then describe observable swing highs and lows. A sequence of higher highs and lows can describe an uptrend; support and resistance are zones inferred from prior behaviour, not guaranteed turning points. Indicators transform historical data and are not independent proof of a future move.' },
+      { title: 'Lesson 3 — Fundamental analysis', copy: 'Interpret economic releases relative to expectations, prior data, and revisions. Interest-rate decisions, inflation, employment, and growth affect assets through several channels. Company analysis also considers earnings, cash flow, debt, and sector conditions; no single data point dictates price.' },
       { title: 'Lesson 4 — Trading psychology', copy: 'Fear, overconfidence, and loss aversion can affect decisions. A written plan, pre-defined risk limit, and review routine can make behaviour easier to examine, but they do not remove emotion or guarantee discipline. Record decisions and process rather than judging skill from one outcome.' },
-      { title: 'Lesson 5 — Fundamental analysis', copy: 'Economic releases are interpreted relative to expectations, prior data, and revisions. Interest-rate decisions, inflation, employment, and growth can affect currencies and other assets through several channels. Company analysis adds earnings, cash flow, debt, and sector conditions; no single data point dictates price.' },
-      { title: 'Lesson 6 — Investing and portfolios', copy: 'An investment portfolio combines holdings with different risks and time horizons. Asset allocation and diversification can manage concentration, while correlations and risks can change. Consider liquidity, fees, taxes, and personal objectives, and seek qualified advice for decisions specific to your circumstances.' },
+      { title: 'Lesson 5 — Portfolio diversification', copy: 'Diversification spreads exposure across assets, sectors, issuers, and return drivers. It can reduce the effect of concentration in some circumstances, but correlations can rise during stress and it cannot eliminate market risk. Review the underlying exposures, not just the number of holdings.' },
+      { title: 'Lesson 6 — Financial-market terminology', copy: 'A bid is a quoted buying price and an ask is a quoted selling price; the difference is the spread. A pip and a lot are common FX conventions, while leverage describes exposure relative to capital. Liquidity concerns how readily an asset can be traded; volatility describes the magnitude, not direction, of price variation.' },
+      { title: 'Lesson 7 — Investment principles', copy: 'Asset allocation should be considered against goals, time horizon, liquidity needs, risk tolerance, fees, and taxes. Nominal return does not account for inflation, and realised returns can differ from expectations. Historical correlation and performance do not guarantee future outcomes or establish personal suitability.' },
     ],
   },
   {
@@ -372,10 +382,10 @@ export const marketingPages: MarketingPage[] = [
       { title: 'Clarity', copy: 'Explain product ideas in accessible language and distinguish previews from working tools.' },
       { title: 'Discipline', copy: 'Keep planning and risk awareness visible across the product story.' },
       { title: 'Separation', copy: 'Maintain an independent application architecture for future practical functionality.' },
-      { title: 'Transparency', copy: 'Use clear notes where availability, pricing, or product details are not yet final.' },
+      { title: 'Transparency', copy: 'Publish confirmed prices while clearly marking unconfigured entitlements, availability, and application links.' },
     ],
     exampleTitle: 'How to use this website',
-    example: 'Visitors can compare product concepts, learn about financial-market topics, review planned membership benefits, and follow configurable links to the future application.',
+    example: 'Visitors can compare product concepts, study financial-market topics, review published plan prices, and check whether verified application links have been configured.',
     metrics: [
       { label: 'This website', value: 'Explain + educate' },
       { label: 'Future app', value: 'Practical tools' },
@@ -385,7 +395,7 @@ export const marketingPages: MarketingPage[] = [
     education: [
       { title: 'Purpose', copy: 'AG Markets’ vision is to make financial-market research and learning more understandable by bringing context, clear explanations, and risk awareness into a coherent product story.' },
       { title: 'The problem it aims to address', copy: 'Market information is dispersed across headlines, charts, data sources, and personal notes. This can make it difficult to compare assumptions, distinguish evidence from interpretation, or see how an idea relates to risk.' },
-      { title: 'How to use this public website', copy: 'The current website introduces AG Markets and provides general educational material. Product screens, market figures, and scenarios shown here are illustrative; this site is not a live-data service or operational financial application.' },
+      { title: 'How to use this public website', copy: 'The current website introduces AG Markets and provides general educational material, including limited in-browser calculators with hypothetical inputs. Product screens, market figures, and scenarios shown here are illustrative; this site is not a live-data service or operational financial application.' },
       { title: 'A separate future application', copy: 'Practical tools and interactive product functionality are planned for a separate AG Markets application. Describing a proposed feature here does not mean it is built, available, or producing financial analysis today.' },
       { title: 'A guiding boundary', copy: 'Technology can help organise information, but it cannot remove uncertainty or replace informed human judgement. No product description is a promise of performance, guaranteed AI accuracy, or personalised advice.' },
     ],
@@ -400,7 +410,57 @@ export interface LegalPage {
   eyebrow: string
   heading: string
   intro: string
+  version: string
+  prepared: string
+  effectiveDate: string
+  publicationBlockers: string[]
   sections: { title: string; paragraphs: string[] }[]
+  sources: { label: string; href: string }[]
+}
+
+const legalDraftMetadata = {
+  version: 'Draft v0.1',
+  prepared: '28 November 2026',
+  effectiveDate: 'Not set; effective only after review and adoption',
+}
+
+const legalSources = {
+  popia: {
+    label: 'Protection of Personal Information Act 4 of 2013 — Information Regulator',
+    href: 'https://inforegulator.org.za/acts/',
+  },
+  popiaRegulations2025: {
+    label: 'POPIA Regulations amendment, Notice 6126, Government Gazette 52523 (17 April 2025)',
+    href: 'https://www.justice.gov.za/legislation/notices/2025/20250417-gg52523gon6126-POPIA-Regulations-Amendment.pdf',
+  },
+  popiaNotice2026: {
+    label: 'POPIA Notice 8199, Government Gazette 55756 (20 November 2026; SAFPS-specific)',
+    href: 'https://www.gov.za/documents/notices/protection-personal-information-exemption-personal-information-children-special',
+  },
+  regulatorPopia: {
+    label: 'Information Regulator: POPIA information and guidance',
+    href: 'https://inforegulator.org.za/popia/',
+  },
+  cpa: {
+    label: 'Consumer Protection Act 68 of 2008 — South African Government',
+    href: 'https://www.gov.za/documents/consumer-protection-act',
+  },
+  cpaAmendment2026: {
+    label: 'Information Regulator statement on the CPA Amendment Regulations gazetted on 15 April 2026',
+    href: 'https://inforegulator.org.za/wp-content/uploads/2026/04/MEDIA-STATEMENT-REGULATOR-NOTES-PUBLISHED-GAZETTE-OF-THE-CONSUMER-PROTECT-ACT-AMENDMENT-REGULATIONS-2026.pdf',
+  },
+  ecta: {
+    label: 'Electronic Communications and Transactions Act 25 of 2002 — South African Government',
+    href: 'https://www.gov.za/documents/electronic-communications-and-transactions-act',
+  },
+  fais: {
+    label: 'Financial Advisory and Intermediary Services Act 37 of 2002 — South African Government',
+    href: 'https://www.gov.za/documents/financial-advisory-and-intermediary-services-act',
+  },
+  fscaSearch: {
+    label: 'FSCA search for authorised Financial Services Providers',
+    href: 'https://www.fsca.co.za/Entity-Persons-Search/?iframe_target=financial-services-providers',
+  },
 }
 
 export const legalPages: LegalPage[] = [
@@ -408,110 +468,292 @@ export const legalPages: LegalPage[] = [
     path: '/privacy-policy',
     label: 'Privacy Policy',
     title: 'Privacy Policy | AG Markets',
-    description: 'Read the AG Markets privacy notice framework and the information that must be confirmed before publication.',
+    description: 'Draft privacy notice for the AG Markets public information website, with verified scope and publication blockers.',
     eyebrow: 'Privacy',
     heading: 'Privacy Policy',
-    intro: 'This draft describes the topics a complete AG Markets privacy notice should address. The organization’s actual practices, responsible entity, and contact details must be confirmed before this page is published as a final policy.',
-    sections: [
-      { title: 'Information and purpose', paragraphs: ['A final notice should identify what information the public website collects, why it is needed, and whether it is provided directly by a visitor or generated through site usage.', 'Do not assume that application account data is processed by this public website. The future application may have separate data flows and a separate notice.'] },
-      { title: 'Use, sharing, and retention', paragraphs: ['The published policy should explain the actual purposes for using personal information, any service providers or other recipients, and how long information is retained.', 'Describe only practices that have been implemented and verified. Include the legal basis or jurisdiction-specific details only after qualified review.'] },
-      { title: 'Choices and contact', paragraphs: ['A complete notice should explain the privacy rights and choices available to visitors in the jurisdictions where AG Markets operates.', 'Before launch, provide a monitored privacy contact and a process for handling requests. The current support destination is a configurable placeholder.'] },
-      { title: 'Policy updates', paragraphs: ['State how material changes will be communicated and the effective date of the final policy. Review this page whenever website technologies or data practices change.'] },
+    intro: 'This draft concerns only the AG Markets public information and education website in this repository. It is not a privacy notice for the separate future application and must not be treated as an adopted policy.',
+    ...legalDraftMetadata,
+    publicationBlockers: [
+      'Identify the legal entity operating the website, its address, its role under POPIA, and its registered Information Officer and privacy contact.',
+      'Confirm the production host, CDN, access/security logs, retention periods, processors, processing locations, and any cross-border transfers.',
+      'Complete a production data-flow and cookie scan, then establish a monitored process for data-subject requests, complaints, and security incidents.',
+      'Confirm the current law and Gazette position, including the scope of any relevant notices, with South African privacy counsel before adoption.',
     ],
+    sections: [
+      {
+        title: 'Scope and what the website does',
+        paragraphs: [
+          'This website introduces AG Markets and provides general financial education. The AG Markets application is separate and is not operated by this project. Any future application must have a notice that accurately describes its own data flows.',
+          'A review of this repository found no on-site contact form, account registration, login, payment checkout, analytics tag, cookie-writing code, browser storage API, embedded third-party content, or server/API submission from the educational demonstrations. The calculators use temporary in-page state for hypothetical inputs. This code review does not inspect the production host, browser extensions, network infrastructure, or server-side logs.',
+        ],
+      },
+      {
+        title: 'Information, purposes, and recipients',
+        paragraphs: [
+          'A browser request to a deployed website can expose technical information to its hosting, delivery, or security providers. The actual information collected, purposes, recipients, locations, and retention for this website have not been verified. This draft therefore makes no promise that no personal information is processed and does not invent a host, service provider, or retention period.',
+          'No contact form or account system is implemented here, and no application or support destination is configured. Do not send personal, account, payment, or financial information through a destination that has not been verified.',
+          'Before adoption, the operator must document the actual purposes and lawful grounds for each processing activity, any operators or other recipients, applicable safeguards, and any transfer of information outside South Africa. Only verified practices should be described.',
+        ],
+      },
+      {
+        title: 'Data-subject requests and complaints',
+        paragraphs: [
+          'POPIA provides rights and remedies that may include requesting access to personal information, asking for correction or deletion where applicable, objecting to certain processing, and complaining to the Information Regulator. The availability and limits of each right depend on the Act and the circumstances.',
+          'No monitored AG Markets privacy contact or request-handling process is configured in this project. It must be provided before this notice is adopted. The Information Regulator publishes POPIA information and guidance at the source linked below.',
+        ],
+      },
+      {
+        title: 'Security, retention, and incidents',
+        paragraphs: [
+          'The site operator must confirm its reasonable technical and organisational safeguards, retention schedule, deletion process, and incident-response procedure. This repository does not establish how the production host handles request logs or security events, so no security certification, storage location, retention duration, or breach-response promise is made here.',
+          'Where POPIA section 22 applies, the responsible party and operator must follow the Act’s security-compromise notification requirements. The actual responsible party and operational contact path remain to be confirmed.',
+        ],
+      },
+      {
+        title: 'Children, special information, and direct marketing',
+        paragraphs: [
+          'The reviewed website code does not request identity, health, biometric, criminal-behaviour, or other special personal information, and it has no email or SMS marketing sign-up. The intended audience, any age restrictions, and how the production environment handles such information have not been verified.',
+          'The Information Regulator’s Notice 8199 in Government Gazette 55756 (20 November 2026) grants specified exemptions and authorisations to the Southern African Fraud Prevention Service. It is a named-party notice, not a general exemption for AG Markets or other websites.',
+          'The Information Regulator also noted that CPA Amendment Regulations were gazetted on 15 April 2026 and that POPIA direct-marketing rules remain relevant. The exact commencement clause and any obligations applicable to AG Markets must be checked against the Gazette before any marketing feature is introduced; this draft does not claim an effective date.',
+        ],
+      },
+      {
+        title: 'Law and policy status',
+        paragraphs: [
+          'POPIA, its regulations, and applicable consumer and electronic-communications laws may govern relevant processing. The official Information Regulator index reviewed lists the 2018 POPIA Regulations. They were amended by Notice 6126 in Government Gazette 52523 on 17 April 2025; that notice states that the amendment is for implementation with immediate effect.',
+          'Government Notice 8199 in Government Gazette 55756 (20 November 2026) is a set of named-party notices for the Southern African Fraud Prevention Service, not a general amendment to the POPIA Regulations or an exemption for AG Markets. No separate general 2026 POPIA Regulations instrument was identified in the official sources reviewed. The operator must recheck the current Gazette and confirm applicability with South African counsel before adoption.',
+          'This page is Draft v0.1 only. Its effective date is not set, and publication is blocked until the entity, actual processing, contacts, operational procedures, and legal review are complete.',
+        ],
+      },
+    ],
+    sources: [legalSources.popia, legalSources.popiaRegulations2025, legalSources.popiaNotice2026, legalSources.regulatorPopia, legalSources.cpaAmendment2026],
   },
   {
     path: '/terms',
     label: 'Terms and Conditions',
     title: 'Terms and Conditions | AG Markets',
-    description: 'Review the draft terms framework for use of the AG Markets public information website.',
+    description: 'Draft terms for the AG Markets public website, clearly separated from future application services.',
     eyebrow: 'Terms',
     heading: 'Terms and Conditions',
-    intro: 'These draft topics are not a complete agreement. AG Markets must confirm the contracting entity, governing law, and actual website services with qualified legal counsel before publication.',
-    sections: [
-      { title: 'Website scope', paragraphs: ['This public website explains and demonstrates AG Markets products. Illustrative interface previews are not operational financial tools, and future application services may be governed by separate terms.', 'A final version should identify the services these terms cover and who may use them.'] },
-      { title: 'Permitted use and content', paragraphs: ['The final terms should set out acceptable use of the website and clarify ownership or permitted use of text, marks, and other materials.', 'Do not rely on this draft to define intellectual-property permissions or restrictions until those terms have been reviewed and approved.'] },
-      { title: 'Availability and liability', paragraphs: ['Explain service availability, warranty exclusions, and liability limits only in language that is appropriate for the applicable law and business model.', 'Nothing in this draft should be treated as a final allocation of legal responsibility.'] },
-      { title: 'Contact and changes', paragraphs: ['Provide an effective date, a process for updates, and a working contact route when the final terms are published.'] },
+    intro: 'These draft terms describe the public website only. The operator, governing law, final service terms, and consumer disclosures must be confirmed by qualified South African counsel before adoption.',
+    ...legalDraftMetadata,
+    publicationBlockers: [
+      'Confirm the contracting website operator, legal name, address, governing law, and a working contact route.',
+      'Review the published plan prices and all consumer-facing claims for CPA and ECTA requirements; subscription features, checkout, taxes, cancellation, and refunds are not configured.',
+      'Confirm intellectual-property permissions and draft appropriate service, acceptable-use, dispute, and liability provisions without limiting mandatory consumer rights.',
+      'Review any future application, AI, market-analysis, or financial-service terms separately, including its regulatory classification.',
     ],
+    sections: [
+      {
+        title: 'What these terms cover',
+        paragraphs: [
+          'These draft terms concern browsing the AG Markets public website, which presents product information and general education. The separate future AG Markets application is not provided by this project and is not covered by these draft terms.',
+          'The website contains illustrative charts and browser-based educational calculators. Calculator results are based on hypothetical inputs and simplified assumptions; they do not connect to a brokerage account, market feed, or order system.',
+        ],
+      },
+      {
+        title: 'Availability, accounts, and subscriptions',
+        paragraphs: [
+          'This project has no account creation, sign-in, checkout, payment processing, or subscription-management service. Application and support links remain unavailable until real destinations are configured. The Explorer, Pro, and Elite price information on the website does not make those services operational; their entitlements and transaction terms have not been configured.',
+          'If the operator later offers paid services, it must publish clear pre-contract information and terms appropriate to the actual service and applicable consumer and electronic-transaction laws before accepting orders or payments. No payment, tax, cancellation, or refund terms are established by this draft.',
+        ],
+      },
+      {
+        title: 'Use of website material',
+        paragraphs: [
+          'Visitors may use the website to read its information and education material. Do not attempt to disrupt the website, bypass access controls, or use it in a way that violates applicable law or another person’s rights. The final operator should review and specify any additional acceptable-use rules.',
+          'Names, logos, text, illustrations, and other material may be protected by intellectual-property rights. The legal owner and permitted reuse conditions have not been verified for this draft. Do not assume that a mark or asset is available for reuse without permission.',
+        ],
+      },
+      {
+        title: 'Financial content and statutory rights',
+        paragraphs: [
+          'Website material is general information and education, not a personalised recommendation or instruction to transact. This statement describes the current site; it does not determine the regulatory status of a future service. See the Risk Disclosure and Financial Disclaimer pages for further context.',
+          'Nothing in these draft terms is intended to exclude or limit a right that cannot lawfully be excluded or limited. Any final warranty, liability, dispute, and consumer-rights language requires review against the actual entity and service.',
+        ],
+      },
+      {
+        title: 'Changes and legal review',
+        paragraphs: [
+          'The operator, applicable law, effective date, complaint route, and process for notifying users of material changes are not established in this project. These terms remain Draft v0.1 and are not an adopted agreement.',
+        ],
+      },
+    ],
+    sources: [legalSources.cpa, legalSources.ecta, legalSources.fais, legalSources.cpaAmendment2026],
   },
   {
     path: '/risk-disclosure',
     label: 'Risk Disclosure',
     title: 'Risk Disclosure | AG Markets',
-    description: 'Understand the general risks of financial markets and why illustrative AG Markets content is not a recommendation.',
+    description: 'General financial-market risk information and the limitations of AG Markets website demonstrations.',
     eyebrow: 'Risk Disclosure',
     heading: 'Financial markets involve risk.',
-    intro: 'This general disclosure highlights important risks for visitors exploring AG Markets. It does not describe every risk of every product, account, or jurisdiction.',
-    sections: [
-      { title: 'Possible loss of capital', paragraphs: ['The value of investments and financial instruments can fall as well as rise. You may lose some or all of the capital you commit, and losses can occur quickly.', 'Leveraged products can magnify both gains and losses. Depending on the instrument and account terms, losses may exceed an initial amount deposited.'] },
-      { title: 'Uncertainty and liquidity', paragraphs: ['Prices can move unpredictably in response to economic, political, company-specific, or market-structure events. Past performance does not reliably predict future results.', 'Liquidity, spreads, trading hours, execution conditions, and product terms can change. A displayed or illustrative price is not a promise of an executable price.'] },
-      { title: 'Personal suitability', paragraphs: ['AG Markets website content is general and educational. It is not tailored to your objectives, financial situation, or experience and should not be treated as a personal recommendation.', 'Consider whether a product is appropriate for you and seek independent professional advice where necessary.'] },
-      { title: 'Preview limitations', paragraphs: ['Product screens and sample scenarios on this website are illustrative only. They are not live market data, working calculations, investment research, or trade signals.'] },
+    intro: 'This general education disclosure describes material risks and the current limits of this public website. It is not a complete warning for any particular product, account, or jurisdiction.',
+    ...legalDraftMetadata,
+    publicationBlockers: [
+      'Have South African financial-services counsel assess the actual website, marketing, and any future AI, Radar, or Investor functionality under FAIS and other applicable laws.',
+      'Confirm the operator’s identity and regulatory status; this draft makes no claim that AG Markets or any entity is licensed or authorised.',
+      'Review product-specific risks against the instruments, jurisdictions, leverage, execution conditions, and services actually offered before launch.',
     ],
+    sections: [
+      {
+        title: 'Loss, leverage, and product risk',
+        paragraphs: [
+          'The value of investments and financial instruments can fall as well as rise. You can lose some or all of the amount invested. Some leveraged or derivative products can magnify losses and, depending on the instrument and contract, losses may exceed the amount initially committed.',
+          'Foreign exchange involves exchange-rate and counterparty risks; shares and indices can react to company, sector, and broad-market events; commodities can be affected by supply, demand, weather, and policy; and crypto-assets can be highly volatile and may have distinct custody, liquidity, and legal risks. This list is not exhaustive and does not imply that AG Markets offers these products.',
+        ],
+      },
+      {
+        title: 'Price, execution, and uncertainty',
+        paragraphs: [
+          'Prices can gap or move rapidly after economic releases, policy decisions, company announcements, geopolitical events, or changes in liquidity. Spreads, financing costs, slippage, trading hours, and execution conditions can change. An illustrative chart or level is not an executable quote, guaranteed barrier, or prediction.',
+          'Past performance and historical patterns do not reliably predict future results. A strategy may behave differently across instruments, time periods, market regimes, and costs.',
+        ],
+      },
+      {
+        title: 'Risk calculations on this website',
+        paragraphs: [
+          'The risk-sizing and risk/reward demonstrations accept hypothetical values and calculate illustrative outputs in the browser. The simplified position-size example assumes each unit gains or loses USD 1 for each USD 1 price move and excludes fees and slippage. Real contract specifications, pip values, currency conversion, margin rules, execution, and costs may change the result materially.',
+          'The performance demonstration uses sample assumptions and an illustrative path; it is not an account statement or actual trading record. No value is sent to a brokerage or used to place an order by this website.',
+        ],
+      },
+      {
+        title: 'No personal suitability assessment',
+        paragraphs: [
+          'This website does not assess a visitor’s objectives, financial position, experience, or risk tolerance. Its material and demonstrations are general education, not a personal recommendation or instruction to trade or invest. Consider independent professional advice where appropriate.',
+        ],
+      },
+      {
+        title: 'Current service and regulatory review',
+        paragraphs: [
+          'This public website has no live market feed, brokerage connection, order execution, or operational financial application. Future application features are separate and are not available through this project.',
+          'The FAIS Act regulates certain financial advisory and intermediary services. A disclaimer alone does not determine whether an activity is regulated. The operator must obtain specialist South African review of any actual or planned personalised analysis, recommendations, solicitation, or intermediation before launch.',
+        ],
+      },
+    ],
+    sources: [legalSources.fais, legalSources.fscaSearch, legalSources.cpa],
   },
   {
     path: '/financial-disclaimer',
     label: 'Financial Disclaimer',
     title: 'Financial Disclaimer | AG Markets',
-    description: 'Read the AG Markets financial-content disclaimer covering education, previews, accuracy, and independent decisions.',
+    description: 'Draft disclaimer for financial education, illustrative calculations, and planned AG Markets products.',
     eyebrow: 'Financial Disclaimer',
     heading: 'Information, not individual advice.',
-    intro: 'The AG Markets public website is designed to introduce products and provide general educational material. This page explains the boundaries of that information.',
-    sections: [
-      { title: 'No personal financial advice', paragraphs: ['Website content is not investment, trading, tax, accounting, or legal advice and does not take account of an individual visitor’s circumstances.', 'Nothing on this site is an offer, solicitation, or recommendation to buy, sell, or hold a financial instrument.'] },
-      { title: 'Illustrations and previews', paragraphs: ['Charts, balances, calculations, conversations, instruments, and results displayed in product previews are fictional or illustrative examples. They do not represent a live connection or expected result.', 'Future application tools will have their own availability, limitations, and terms. Their development or description on this site does not mean they are currently operational.'] },
-      { title: 'Accuracy and independent verification', paragraphs: ['Information may be incomplete, delayed, or changed without notice. Visitors should independently verify important facts with authoritative sources before relying on them.', 'AG Markets does not guarantee that any strategy, analysis method, or tool will produce a particular financial outcome.'] },
-      { title: 'Professional guidance', paragraphs: ['Seek advice from an appropriately qualified independent professional where you need guidance tailored to your circumstances.'] },
+    intro: 'This draft explains what the AG Markets public website currently does and does not provide. It is not a substitute for legal review of the website or any future financial service.',
+    ...legalDraftMetadata,
+    publicationBlockers: [
+      'Obtain specialist review of all financial claims, AI demonstrations, product marketing, and future app functionality under the FAIS Act and applicable laws.',
+      'Confirm the operating entity, regulatory status, financial products or services actually offered, and any required authorisation before publication.',
+      'Check all public data, sample calculations, source dates, and disclaimers against the production experience and preserve any non-excludable statutory rights.',
     ],
+    sections: [
+      {
+        title: 'General education, not personal advice',
+        paragraphs: [
+          'The current public website provides product information and general financial education. Its content does not take account of a visitor’s objectives, financial circumstances, knowledge, or experience and should not be relied on as a personal recommendation or instruction to transact.',
+          'This wording describes the current website; it is not a claim that every future service is outside financial-services regulation. Whether conduct constitutes advice or an intermediary service depends on the actual activity and applicable law.',
+        ],
+      },
+      {
+        title: 'Illustrative examples and working demonstrations',
+        paragraphs: [
+          'Charts, market paths, interface previews, asset allocations, performance figures, and sample accounts are hypothetical illustrations, not live prices, customer outcomes, or AG Markets trading performance.',
+          'Some educational website demonstrations do calculate values from visitor-entered hypothetical inputs using stated simplified assumptions. Those calculations run in the browser and are not a live-data service, investment research product, trade signal, brokerage connection, or order-execution tool.',
+        ],
+      },
+      {
+        title: 'AI, accuracy, and uncertainty',
+        paragraphs: [
+          'No AI system is demonstrated as an operational market analyst on this public website. Any future AI-assisted output may be incomplete, incorrect, outdated, or based on unsuitable inputs. AI cannot guarantee accuracy, predict market outcomes, or remove financial risk.',
+          'Check important facts against current, authoritative sources and use independent judgement. Do not treat an illustrative example, automated explanation, or historical pattern as a guarantee of future performance.',
+        ],
+      },
+      {
+        title: 'No regulatory or performance claim',
+        paragraphs: [
+          'This website makes no representation that AG Markets or an unidentified operating entity holds a financial-services licence, is authorised by a regulator, or has achieved any trading result. Verify the status of any financial-services provider independently with the FSCA where relevant.',
+          'A disclaimer does not replace any licence, approval, disclosure, or other requirement that may apply to an actual service. Future analysis, recommendations, marketing, or intermediation must be assessed by qualified South African regulatory counsel before being offered.',
+        ],
+      },
+      {
+        title: 'No exclusion of mandatory rights',
+        paragraphs: [
+          'Nothing in this draft is intended to exclude or limit a right or remedy that applicable law does not permit the operator to exclude or limit. The legal entity, governing law, final liability wording, and effective date remain unconfirmed.',
+        ],
+      },
+    ],
+    sources: [legalSources.fais, legalSources.fscaSearch, legalSources.cpa, legalSources.ecta],
   },
   {
     path: '/cookie-policy',
     label: 'Cookie Policy',
     title: 'Cookie Policy | AG Markets',
-    description: 'Read the cookie-policy framework that must be aligned with the actual technologies used by the AG Markets website.',
+    description: 'Draft cookie notice based on a repository review, with production scanning and configuration still required.',
     eyebrow: 'Cookies',
     heading: 'Cookie Policy',
-    intro: 'This draft explains what a complete cookie notice needs to cover. The technologies currently used by the published site must be audited before this is presented as a final policy.',
-    sections: [
-      { title: 'What cookies and similar tools do', paragraphs: ['Cookies and similar technologies can store preferences, support essential site functions, or help measure how a website is used.', 'The final policy should list the actual technologies deployed on this website rather than assume particular analytics or advertising services are present.'] },
-      { title: 'Categories and choices', paragraphs: ['Identify each technology by purpose, provider, and retention period. Explain which tools are essential and which require consent under applicable law.', 'Provide working preference controls where required. Browser settings may also allow visitors to manage or remove stored cookies.'] },
-      { title: 'Third-party services', paragraphs: ['If third-party content or services set technologies on this site, identify them and link to their relevant notices after confirming the integration and its data flow.'] },
-      { title: 'Review before launch', paragraphs: ['Complete a technical cookie audit, confirm the applicable consent requirements, and add an effective date and contact route before publishing this as a final policy.'] },
+    intro: 'This draft reports what was found in the website source code. It does not establish what the production host, CDN, security layer, or linked external sites may store.',
+    ...legalDraftMetadata,
+    publicationBlockers: [
+      'Inspect the deployed website in a clean browser and audit cookies, local/session storage, response headers, network requests, analytics, embedded content, and third-party scripts.',
+      'Confirm each technology’s operator, purpose, duration, access, location, and whether it processes personal information.',
+      'Obtain South African legal review of notice, consent, and preference requirements and implement working controls if required.',
     ],
+    sections: [
+      {
+        title: 'What the source-code review found',
+        paragraphs: [
+          'The reviewed website code contains no cookie-writing API, analytics or advertising tag, embedded third-party content, or browser local/session-storage call. The Inter font is bundled with the website rather than loaded from a remote font service. This describes the repository, not a verified production deployment.',
+          'The production host, CDN, web application firewall, and other infrastructure may set cookies or process technical request data. Their configuration has not been supplied or inspected. For that reason this draft cannot promise that the deployed site sets no cookies or list providers, purposes, or expiry periods.',
+        ],
+      },
+      {
+        title: 'Preferences and external destinations',
+        paragraphs: [
+          'This website does not currently implement a cookie-preference panel or consent controls. Browser settings can provide general cookie controls, but they do not replace any site-level choice or notice that applicable law may require.',
+          'No application or support destination is currently configured. If real external links are added, following them will take visitors away from this website and the destination may have its own cookies and privacy practices.',
+        ],
+      },
+      {
+        title: 'Lawful use and future changes',
+        paragraphs: [
+          'If production technologies store or access information, or process personal information, the operator must identify what they do, assess the applicable legal requirements, and provide accurate notice and choices where required. No consent category or exemption is assumed by this draft.',
+          'Before adding analytics, advertising, embedded media, or a consent tool, document the provider, data flow, retention, and legal basis and update this page. The production scan and legal review remain launch blockers.',
+        ],
+      },
+    ],
+    sources: [legalSources.popia, legalSources.popiaRegulations2025, legalSources.ecta, legalSources.regulatorPopia],
   },
 ]
 
 export const faqItems = [
   { question: 'What is AG Markets?', answer: 'AG Markets is a planned financial intelligence platform with product concepts spanning market research, risk awareness, trading utilities, investor context, and education. This website explains those concepts; it is not the application itself.' },
   { question: 'Is the AG Markets application available?', answer: 'No application functionality is provided by this project. The current product is a public information and education website; any future application will be separate. Availability has not been announced.' },
-  { question: 'Are the product previews live tools or live market data?', answer: 'No. Interface screens, prices, charts, sample conversations, and scenarios on this website are illustrative. They are not connected to market data, do not calculate positions, and do not monitor or execute trades.' },
+  { question: 'Are the product previews live tools or live market data?', answer: 'No. The website has no live market feed, operational application, or trade execution. Some educational demonstrations do calculate hypothetical values locally from inputs using simplified assumptions, but they do not access market data, connect to a brokerage, or place trades.' },
   { question: 'Can AI analysis guarantee an accurate forecast?', answer: 'No. AI-assisted analysis can omit context, use outdated or incorrect inputs, or produce a plausible but mistaken explanation. It cannot guarantee accuracy or market outcomes; verify source information and use independent human judgement.' },
   { question: 'Does AG Markets provide personal investment or trading advice?', answer: 'No. Website material is general education and product information, not advice tailored to your finances, objectives, or experience. Consider independent qualified advice where you need guidance for your circumstances.' },
   { question: 'Are the examples or trading results real?', answer: 'No. Financial figures, instruments, charts, account values, and outcomes in previews are hypothetical illustrations, not live data, customer results, or AG Markets trading performance.' },
-  { question: 'How much will AG Markets cost?', answer: 'No subscription price or purchase offer is available. Pricing and any final membership details will be announced when the separate application is ready.' },
-  { question: 'How can I contact AG Markets?', answer: 'The Contact page links to the support destination currently configured for this website. That destination is a placeholder, not a confirmed monitored contact channel; do not send passwords, payment details, or sensitive financial information.' },
+  { question: 'How much will AG Markets cost?', answer: 'The Pricing page lists Explorer as free, Pro at $3.99 monthly or $33.52 annually, and Elite at $9.99 monthly or $83.92 annually. Plan entitlements, registration, and subscription checkout are not yet configured, so these prices are not a purchase offer.' },
+  { question: 'How can I contact AG Markets?', answer: 'A monitored contact channel has not yet been configured for this public website. The Contact page explains this; do not send passwords, payment details, or sensitive financial information through an unverified channel.' },
 ]
 
 export const pricingPlans = [
   {
     name: 'Explorer',
-    audience: 'For people building a regular market-research habit.',
-    description: 'A proposed starting tier centred on market awareness and guided learning.',
-    benefits: ['Core market overview concepts', 'Introductory planning utilities', 'Selected Academy learning paths', 'Personal watchlist concept'],
+    audience: 'For visitors starting with AG Markets.',
+    monthlyPrice: 0,
   },
   {
     name: 'Pro',
-    audience: 'For active market participants who need a broader research workflow.',
-    description: 'A proposed tier combining deeper research support with practical planning features.',
-    benefits: ['Expanded AI Analyst research', 'Broader Radar monitoring options', 'Full trading-tool collection', 'Performance review features'],
+    audience: 'The intermediate subscription option.',
+    monthlyPrice: 3.99,
   },
   {
     name: 'Elite',
-    audience: 'For experienced users who want a more comprehensive view.',
-    description: 'A proposed tier for expanded monitoring and portfolio research capabilities.',
-    benefits: ['Extended intelligence features', 'Additional monitoring preferences', 'Deeper portfolio context', 'Expanded analytical summaries'],
+    audience: 'The highest subscription tier.',
+    monthlyPrice: 9.99,
   },
-]
+] as const
 
 export const productNavigation = [
   { label: 'AI Intelligence', path: '/ai-intelligence' },

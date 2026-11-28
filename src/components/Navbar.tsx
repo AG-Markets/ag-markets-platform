@@ -74,7 +74,10 @@ export function Navbar() {
     }
   }, [open])
 
-  const closeMenu = () => setOpen(false)
+  const closeMenu = () => {
+    setOpen(false)
+    toggleRef.current?.focus()
+  }
   const closeDropdown = () => setActiveDropdown(null)
 
   return (
@@ -82,14 +85,15 @@ export function Navbar() {
       <div className="nav-inner">
         <Brand />
         <div className="mobile-header-actions">
-          <a
-            className="mobile-account-button"
-            href={applicationConfig.loginUrl}
-            aria-label="Account"
-            title="Account"
-          >
-            <CircleUserRound size={20} strokeWidth={1.8} aria-hidden="true" />
-          </a>
+          {applicationConfig.loginUrl ? (
+            <a className="mobile-account-button" href={applicationConfig.loginUrl} aria-label="Account" title="Account">
+              <CircleUserRound size={20} strokeWidth={1.8} aria-hidden="true" />
+            </a>
+          ) : (
+            <button className="mobile-account-button" type="button" disabled aria-label="Account access is not available yet" title="Account access is not available yet">
+              <CircleUserRound size={20} strokeWidth={1.8} aria-hidden="true" />
+            </button>
+          )}
         </div>
         <button
           ref={toggleRef}
@@ -127,8 +131,10 @@ export function Navbar() {
               {legalNavigation.map((item) => <Link key={item.path} to={item.path} onClick={closeDropdown}>{item.label}</Link>)}
             </span>
           </span>
-          <a className="nav-login" href={applicationConfig.loginUrl}>Login</a>
-          <a className="button button-small" href={applicationConfig.registrationUrl}>Get Started</a>
+          {applicationConfig.loginUrl && <a className="nav-login" href={applicationConfig.loginUrl}>Login</a>}
+          {applicationConfig.registrationUrl
+            ? <a className="button button-small" href={applicationConfig.registrationUrl}>Get Started</a>
+            : <Link className="button button-small" to="/pricing">View Pricing</Link>}
         </nav>
       </div>
       <aside
@@ -157,15 +163,16 @@ export function Navbar() {
               <span>{label}</span>
             </Link>
           ))}
-          <a href={applicationConfig.loginUrl} onClick={closeMenu}>
-            <span className="mobile-link-index">{String(mobileLinks.length + 1).padStart(2, '0')}</span>
-            <span>Login</span>
-          </a>
+          {applicationConfig.loginUrl && (
+            <a href={applicationConfig.loginUrl} onClick={closeMenu}>
+              <span className="mobile-link-index">{String(mobileLinks.length + 1).padStart(2, '0')}</span>
+              <span>Login</span>
+            </a>
+          )}
         </nav>
-        <a className="mobile-nav-cta" href={applicationConfig.registrationUrl} onClick={closeMenu}>
-          Get Started
-          <span aria-hidden="true">→</span>
-        </a>
+        {applicationConfig.registrationUrl
+          ? <a className="mobile-nav-cta" href={applicationConfig.registrationUrl} onClick={closeMenu}>Get Started<span aria-hidden="true">→</span></a>
+          : <Link className="mobile-nav-cta" to="/pricing" onClick={closeMenu}>View Pricing<span aria-hidden="true">→</span></Link>}
       </aside>
     </header>
   )

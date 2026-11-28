@@ -26,9 +26,13 @@ export function Footer() {
         </div>
         <div>
           <h3>Application</h3>
-          <a href={applicationConfig.loginUrl}>Login <ArrowUpRight size={13} /></a>
-          <a href={applicationConfig.registrationUrl}>Get Started <ArrowUpRight size={13} /></a>
-          <a href={applicationConfig.supportUrl}>Support <ArrowUpRight size={13} /></a>
+          {applicationConfig.applicationUrl && <a href={applicationConfig.applicationUrl}>Application <ArrowUpRight size={13} /></a>}
+          {applicationConfig.loginUrl && <a href={applicationConfig.loginUrl}>Login <ArrowUpRight size={13} /></a>}
+          {applicationConfig.registrationUrl && <a href={applicationConfig.registrationUrl}>Get Started <ArrowUpRight size={13} /></a>}
+          {applicationConfig.supportUrl && <a href={applicationConfig.supportUrl}>Support <ArrowUpRight size={13} /></a>}
+          {!applicationConfig.applicationUrl && !applicationConfig.loginUrl && !applicationConfig.registrationUrl && !applicationConfig.supportUrl && (
+            <p className="footer-unavailable">Application access and support channels are not configured.</p>
+          )}
         </div>
       </div>
       <div className="container footer-bottom">

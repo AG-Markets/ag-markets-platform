@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight, Bell, ChevronDown, Search } from 'lucide-react'
+import { ArrowDownRight, ArrowUpRight, Bell, Search } from 'lucide-react'
 
 export function DashboardPreview() {
   return (
@@ -17,7 +17,7 @@ export function DashboardPreview() {
         <div className="dashboard-main">
           <div className="dashboard-heading">
             <div><span>MARKET OVERVIEW</span><strong>Global Markets</strong></div>
-            <button type="button">Illustrative view <ChevronDown size={12} /></button>
+            <span>ILLUSTRATIVE SAMPLE</span>
           </div>
           <div className="market-cards">
             <div><span>EUR / USD</span><strong>1.0842</strong><small className="positive"><ArrowUpRight size={12} /> +0.34%</small></div>
@@ -42,13 +42,13 @@ export function DashboardPreview() {
             <div className="ai-panel">
               <div className="ai-panel-head"><span className="ai-dot"></span><strong>AG AI Analyst</strong></div>
               <span className="sample-label">Illustrative</span>
-              <p>Market structure remains constructive above 1.0800.</p>
+              <p>Example note: compare price structure with the selected timeframe.</p>
               <div className="signal-row"><span>Sentiment</span><strong>Constructive</strong></div>
               <div className="signal-meter"><span></span></div>
               <div className="signal-row"><span>Risk level</span><strong>Moderate</strong></div>
             </div>
           </div>
-          <div className="disclaimer">Illustrative interface — no live market connection</div>
+          <div className="disclaimer">All displayed figures and commentary are illustrative examples—not live market data, forecasts, or trading signals.</div>
         </div>
       </div>
     </div>

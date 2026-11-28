@@ -291,7 +291,7 @@ function RiskSizingCalculator() {
         <div className="calculation-results" aria-live="polite">
           {error ? <p className="calculator-error" role="alert">{error}</p> : (
             <>
-              <span className="result-label">Illustrative maximum risk budget</span>
+              <span className="result-label">Illustrative risk budget</span>
               <strong className="result-primary">{usd.format(riskAmount)}</strong>
               <div className="result-divider" />
               <div className="result-row"><span>Entry-to-stop distance</span><strong>{decimal.format(unitRisk)} price units</strong></div>
@@ -300,7 +300,7 @@ function RiskSizingCalculator() {
           )}
         </div>
       </div>
-      <p className="demo-caption">Formula: balance × risk percentage ÷ absolute entry-to-stop distance. Real contract sizes, pip values, account currency, leverage, costs and execution can materially change exposure; a stop does not guarantee this maximum loss.</p>
+      <p className="demo-caption">Formula: balance × risk percentage ÷ absolute entry-to-stop distance. Real contract sizes, pip values, account currency, leverage, costs and execution can materially change exposure; a stop cannot guarantee loss stays within this budget.</p>
     </div>
   )
 }
@@ -351,6 +351,51 @@ function RiskRewardCalculator() {
         </div>
       </div>
       <p className="demo-caption">The displayed ratio compares price distances only, before spread, fees, slippage or gaps. A larger potential reward does not make an outcome more likely.</p>
+    </div>
+  )
+}
+
+function PipValueDemonstration() {
+  const [lots, setLots] = useState('0.1')
+  const [pipMove, setPipMove] = useState('25')
+  const values = [lots, pipMove].map((value) => value.trim() === '' ? Number.NaN : Number(value))
+  const [standardLots, pips] = values
+  const error = !values.every(Number.isFinite)
+    ? 'Enter a number in every field.'
+    : standardLots <= 0 || standardLots > 1000
+      ? 'Position size must be greater than 0 and no more than 1,000 standard lots.'
+      : pips <= 0 || pips > 100_000
+        ? 'Pip movement must be greater than 0 and no more than 100,000 pips.'
+        : ''
+  const units = error ? 0 : standardLots * 100_000
+  const pipValue = error ? 0 : units * 0.0001
+  const moveValue = error ? 0 : pipValue * pips
+
+  return (
+    <div className="demo-panel calculator-panel">
+      <div className="demo-panel-heading">
+        <div><span className="panel-kicker">PIP VALUE · SIMPLIFIED FX EXAMPLE</span><h3>Estimate the value of a pip movement</h3></div>
+        <span className="illustrative-tag">Interactive</span>
+      </div>
+      <p className="calculator-intro">Assumes a standard lot of 100,000 units in an FX pair quoted in USD, with one pip equal to 0.0001.</p>
+      <div className="calculator-layout">
+        <div className="calculator-fields">
+          <NumberField id="pip-lots" label="Position size" value={lots} onChange={setLots} min={0} max={1000} step={0.01} suffix="standard lots" />
+          <NumberField id="pip-move" label="Illustrative movement" value={pipMove} onChange={setPipMove} min={0} max={100000} suffix="pips" />
+        </div>
+        <div className="calculation-results" aria-live="polite">
+          {error ? <p className="calculator-error" role="alert">{error}</p> : (
+            <>
+              <span className="result-label">Illustrative position size</span>
+              <strong className="result-primary">{decimal.format(units)} units</strong>
+              <div className="result-divider" />
+              <div className="result-row"><span>Value per pip</span><strong>{usd.format(pipValue)}</strong></div>
+              <div className="result-row"><span>Value of stated movement</span><strong>{usd.format(moveValue)}</strong></div>
+            </>
+          )}
+        </div>
+      </div>
+      <p className="demo-caption">Formula: standard lots × 100,000 units × 0.0001 USD per pip. This simplified example does not apply to JPY-quoted pairs, non-USD quote currencies, other contract sizes, account-currency conversion, costs, or execution.</p>
     </div>
   )
 }
@@ -494,10 +539,10 @@ function PerformanceAnalyticsDemo() {
 
 function AcademyProgress() {
   const lessons = [
-    ['01', 'Forex basics', 'Quotes, pairs and pips'],
-    ['02', 'Chart reading', 'Trends and price zones'],
-    ['03', 'Risk planning', 'Exposure and position size'],
-    ['04', 'Decision process', 'Bias and journaling'],
+    ['01', 'Risk foundations', 'Position size and possible loss'],
+    ['02', 'Technical analysis', 'Trends and price zones'],
+    ['03', 'Fundamental context', 'Events and expectations'],
+    ['04', 'Investing principles', 'Horizon and diversification'],
   ]
   return (
     <div className="demo-panel academy-visual">
@@ -534,7 +579,7 @@ function ProductVisual({ path }: DemonstrationProps) {
     return <DemonstrationFrame eyebrow="Risk planning" title="Make downside assumptions visible before considering a position." description="These browser-based lessons use user-entered hypothetical values. They are educational calculations, not trading instructions or application tools."><RiskSizingCalculator /><RiskRewardCalculator /></DemonstrationFrame>
   }
   if (path === '/trading-tools') {
-    return <DemonstrationFrame eyebrow="Trading calculations" title="Understand what planning formulas can—and cannot—tell you." description="Explore position size and risk/reward arithmetic without connecting an account, market feed or order system."><RiskSizingCalculator /><RiskRewardCalculator /></DemonstrationFrame>
+    return <DemonstrationFrame eyebrow="Trading calculations" title="Understand what planning formulas can—and cannot—tell you." description="Explore pip-value arithmetic for a clearly defined FX example without connecting an account, market feed or order system."><PipValueDemonstration /></DemonstrationFrame>
   }
   if (path === '/investor-intelligence') {
     return <DemonstrationFrame eyebrow="Portfolio education" title="Explore how asset weights make up a hypothetical portfolio." description="Adjust the sample allocation to see its composition. The display is not a recommended or suitable portfolio for any individual."><PortfolioAllocationDemo /></DemonstrationFrame>
@@ -543,7 +588,7 @@ function ProductVisual({ path }: DemonstrationProps) {
     return <DemonstrationFrame eyebrow="Performance education" title="Read multiple measures together—not a single headline." description="Adjust hypothetical trade assumptions and compare sample win/loss counts, profit factor, expectancy and peak-to-trough drawdown."><PerformanceAnalyticsDemo /></DemonstrationFrame>
   }
   if (path === '/academy') {
-    return <DemonstrationFrame eyebrow="Learning path" title="Connect foundational concepts step by step." description="A sample sequence moves from market vocabulary to analysis, risk management and decision review."><AcademyProgress /></DemonstrationFrame>
+    return <DemonstrationFrame eyebrow="Learning path" title="Connect foundational concepts step by step." description="A sample sequence begins with risk, then introduces technical and fundamental analysis and investing principles."><AcademyProgress /></DemonstrationFrame>
   }
   return null
 }

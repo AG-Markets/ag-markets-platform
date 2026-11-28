@@ -1,28 +1,15 @@
 import { ArrowRight, Check, Compass, ShieldCheck } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { applicationConfig } from '../config/application'
-import { AGTradingAnimation, type AnimationVariant } from './AGTradingAnimation'
+import { AGTradingAnimation } from './AGTradingAnimation'
 import { FinancialDemonstrations } from './FinancialDemonstrations'
 import type { MarketingPage as MarketingPageContent } from '../data/sitePages'
 import { productNavigation } from '../data/sitePages'
-
-const animationVariants: Record<string, AnimationVariant> = {
-  '/ai-intelligence': 'intelligence',
-  '/ai-analyst': 'analyst',
-  '/market-radar': 'radar',
-  '/risk-intelligence': 'risk',
-  '/trading-tools': 'tools',
-  '/investor-intelligence': 'investor',
-  '/performance-analytics': 'performance',
-  '/academy': 'academy',
-  '/about': 'intelligence',
-}
 
 export function MarketingPage({ page }: { page: MarketingPageContent }) {
   const related = productNavigation.filter((item) => item.path !== page.path).slice(0, 3)
 
   return (
-    <main className={`marketing-page marketing-page-${page.variant}`}>
+    <main className={`marketing-page marketing-page-${page.variant}`} id="main-content" tabIndex={-1}>
       <section className="page-hero">
         <div className="container page-hero-grid">
           <div className="page-hero-copy">
@@ -32,11 +19,12 @@ export function MarketingPage({ page }: { page: MarketingPageContent }) {
             <div className="eyebrow"><span></span>{page.eyebrow}</div>
             <h1>{page.heading}</h1>
             <p className="page-intro">{page.intro}</p>
+            {page.intendedAudience && <p className="page-audience"><strong>Intended for:</strong> {page.intendedAudience}</p>}
             <div className="page-actions">
-              <a className="button" href={applicationConfig.applicationUrl}>Explore in the application <ArrowRight size={16} /></a>
-              <a className="button button-outline" href={applicationConfig.registrationUrl}>Get Started</a>
+              <a className="button" href="#page-process">How it is intended to work <ArrowRight size={16} /></a>
+              <Link className="button button-outline" to="/pricing">View pricing</Link>
             </div>
-            <p className="preview-notice">Application links are temporary. Product previews are illustrative; educational examples on this website are separate from application tools.</p>
+            <p className="preview-notice">This product is a planned application concept. Previews are illustrative; interactive educational examples on this website are limited and are not application services.</p>
           </div>
           <aside className="page-preview" aria-label={`${page.label} illustrative preview`}>
             <div className="preview-topline">
@@ -53,7 +41,7 @@ export function MarketingPage({ page }: { page: MarketingPageContent }) {
                 <div key={metric.label}><span>{metric.label}</span><strong>{metric.value}</strong></div>
               ))}
             </div>
-            <AGTradingAnimation variant={animationVariants[page.path] ?? 'intelligence'} size="compact" />
+            {page.path === '/ai-analyst' && <AGTradingAnimation variant="analyst" size="compact" />}
             <div className="preview-footnote">Illustrative scenario · No live data or application functionality</div>
           </aside>
         </div>
@@ -69,7 +57,7 @@ export function MarketingPage({ page }: { page: MarketingPageContent }) {
         </div>
       </section>
 
-      <section className="page-section page-process">
+      <section className="page-section page-process" id="page-process">
         <div className="container">
           <div className="page-section-heading">
             <div className="eyebrow"><span></span>How it is intended to work</div>
@@ -111,7 +99,7 @@ export function MarketingPage({ page }: { page: MarketingPageContent }) {
           <div className="container">
             <div className="page-section-heading">
               <div className="eyebrow"><span></span>Financial education</div>
-              <h2>{page.path === '/academy' ? 'Six foundations for informed learning.' : 'The concepts behind this subject.'}</h2>
+              <h2>{page.path === '/academy' ? 'Seven foundations for informed learning.' : 'The concepts behind this subject.'}</h2>
               <p>General educational information only. Examples are hypothetical and are not recommendations or predictions.</p>
             </div>
             <div className="education-grid">
@@ -152,8 +140,13 @@ export function MarketingPage({ page }: { page: MarketingPageContent }) {
 
       <section className="page-cta">
         <div className="container page-cta-inner">
-          <div><div className="eyebrow"><span></span>AG Markets application</div><h2>Explore the platform when it is available.</h2><p>The public website explains the product. Practical functionality will live in a separately developed application.</p></div>
-          <div className="page-actions"><a className="button" href={applicationConfig.registrationUrl}>Get Started <ArrowRight size={16} /></a></div>
+          <div><div className="eyebrow"><span></span>Continue exploring</div><h2>Build your understanding before the application is available.</h2><p>The public website explains product concepts and offers limited educational demonstrations. Operational application services are not available here.</p></div>
+          <div className="page-actions">
+            {page.path === '/academy'
+              ? <Link className="button" to="/ai-analyst">Explore the AI Analyst <ArrowRight size={16} /></Link>
+              : <Link className="button" to="/academy">Visit the Academy <ArrowRight size={16} /></Link>}
+            <Link className="button button-outline" to="/pricing">View pricing</Link>
+          </div>
         </div>
       </section>
     </main>

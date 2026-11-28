@@ -6,11 +6,15 @@ import { MarketingPage } from './components/MarketingPage'
 import { Navbar } from './components/Navbar'
 import { HomePage } from './pages/HomePage'
 import { legalPages, marketingPages } from './data/sitePages'
+import { getRouteMetadata, OPEN_GRAPH_IMAGE_URL, SITE_ORIGIN } from './data/routeMetadata'
 
-function RouteMetadata({ title, description }: { title: string; description: string }) {
+function RouteMetadata() {
+  const { pathname } = useLocation()
+  const { path, title, description } = getRouteMetadata(pathname)
+
   useEffect(() => {
     document.title = title
-    const canonicalUrl = `https://agmarkets.co.za${window.location.pathname}`
+    const canonicalUrl = `${SITE_ORIGIN}${path}`
     let meta = document.querySelector<HTMLMetaElement>('meta[name="description"]')
     if (!meta) {
       meta = document.createElement('meta')
@@ -41,8 +45,9 @@ function RouteMetadata({ title, description }: { title: string; description: str
     setOpenGraph('og:title', title)
     setOpenGraph('og:description', description)
     setOpenGraph('og:url', canonicalUrl)
-    setOpenGraph('og:image', 'https://agmarkets.co.za/ag-markets-logo.png')
-  }, [description, title])
+    setOpenGraph('og:image', OPEN_GRAPH_IMAGE_URL)
+    setOpenGraph('og:image:alt', 'AG Markets logo')
+  }, [description, path, title])
   return null
 }
 
@@ -55,38 +60,39 @@ function AppRoutes() {
 
   return (
     <>
+      <a className="skip-link" href="#main-content">Skip to main content</a>
       <Navbar />
+      <RouteMetadata />
       <Routes>
-        <Route
-          path="/"
-          element={<><RouteMetadata title="AG Markets — AI Financial Intelligence" description="Explore AG Markets, a planned financial intelligence platform for market research, risk awareness, trading tools, investing context, and education." /><HomePage /></>}
-        />
+        <Route path="/" element={<HomePage />} />
         {marketingPages.map((page) => (
           <Route
             key={page.path}
             path={page.path}
-            element={<><RouteMetadata title={page.title} description={page.description} /><MarketingPage page={page} /></>}
+            element={<MarketingPage page={page} />}
           />
         ))}
-        <Route path="/pricing" element={<><RouteMetadata title="Pricing and Membership | AG Markets" description="Compare proposed AG Markets membership audiences and planned benefits. Pricing and availability are not final." /><PricingPage /></>} />
-        <Route path="/faq" element={<><RouteMetadata title="Frequently Asked Questions | AG Markets" description="Answers about AG Markets, its illustrative previews, the future application, and planned membership." /><FaqPage /></>} />
-        <Route path="/contact" element={<><RouteMetadata title="Contact AG Markets" description="Contact AG Markets about its public website, product information, and future application availability." /><ContactPage /></>} />
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/faq" element={<FaqPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         {legalPages.map((page) => (
           <Route
             key={page.path}
             path={page.path}
-            element={<><RouteMetadata title={page.title} description={page.description} /><LegalPage page={page} /></>}
+            element={<LegalPage page={page} />}
           />
         ))}
-        <Route path="*" element={<><RouteMetadata title="Page Not Found | AG Markets" description="The requested page could not be found. Return to AG Markets to explore the public website." /><NotFoundPage /></>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </>
   )
 }
 
-function App() {
+export function App() {
   return <BrowserRouter><AppRoutes /></BrowserRouter>
 }
 
 export default App
+
+export { AppRoutes }
