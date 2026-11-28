@@ -2,6 +2,7 @@ import { ArrowRight, Check, Compass, ShieldCheck } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { applicationConfig } from '../config/application'
 import { AGTradingAnimation, type AnimationVariant } from './AGTradingAnimation'
+import { FinancialDemonstrations } from './FinancialDemonstrations'
 import type { MarketingPage as MarketingPageContent } from '../data/sitePages'
 import { productNavigation } from '../data/sitePages'
 
@@ -35,7 +36,7 @@ export function MarketingPage({ page }: { page: MarketingPageContent }) {
               <a className="button" href={applicationConfig.applicationUrl}>Explore in the application <ArrowRight size={16} /></a>
               <a className="button button-outline" href={applicationConfig.registrationUrl}>Get Started</a>
             </div>
-            <p className="preview-notice">Application links are temporary. Product previews on this website are illustrative, not operational.</p>
+            <p className="preview-notice">Application links are temporary. Product previews are illustrative; educational examples on this website are separate from application tools.</p>
           </div>
           <aside className="page-preview" aria-label={`${page.label} illustrative preview`}>
             <div className="preview-topline">
@@ -124,6 +125,8 @@ export function MarketingPage({ page }: { page: MarketingPageContent }) {
           </div>
         </section>
       )}
+
+      <FinancialDemonstrations path={page.path} />
 
       <section className="page-section page-value">
         <div className="container page-value-grid">
